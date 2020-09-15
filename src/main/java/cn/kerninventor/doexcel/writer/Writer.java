@@ -5,11 +5,13 @@ import cn.kerninventor.doexcel.Appender;
 import cn.kerninventor.doexcel.reader.Reader;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *
+ * </p>
  *
  * @author Kern
  */
-public interface Writer<T> extends WriteBreakpoint {
+public interface Writer<T> {
 
     /**
      * 是否在写入时覆盖已有的sheet页
@@ -22,6 +24,8 @@ public interface Writer<T> extends WriteBreakpoint {
 
     Reader<T> convert();
 
+    WriteBreakpoint breakOff();
+
 //    Writer<T> write(WritingSupervisor supervisor);
 //
 //    Writer<T> write(List<T> tList, WritingSupervisor supervisor);
@@ -29,6 +33,9 @@ public interface Writer<T> extends WriteBreakpoint {
 //    Writer<T> write(String sheetName, WritingSupervisor supervisor);
 //
 //    Writer<T> write(String sheetName, List<T> tList, WritingSupervisor supervisor);
+
+
+
 
     WriteBreakpoint output(Appender... appenderArr);
 
