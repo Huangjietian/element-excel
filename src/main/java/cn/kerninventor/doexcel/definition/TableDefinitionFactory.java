@@ -1,45 +1,57 @@
-package cn.kerninventor.doexcel.parser;
+package cn.kerninventor.doexcel.definition;
 
 import cn.kerninventor.doexcel.elements.ExcelElements;
 import cn.kerninventor.doexcel.elements.ExcelTabulation;
-import sun.reflect.annotation.AnnotationType;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.lang.reflect.Proxy;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Objects;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *     表格元素定义工厂
+ * </p>
  *
  * @author Kern
  */
-public class AnnotatedClassParser<T> {
+public class TableDefinitionFactory<T> {
 
-    private LinkedHashMap<Annotation, Class<? extends ElementParser>> parseTasks;
+    private LinkedHashMap<Annotation, ExcelElements> excelElementsLinkedHashMap ;
+    private T t;
 
-    private AnnotatedClassParser() {
-        parseTasks = new LinkedHashMap<>(16);
+    private TableDefinitionFactory() {
+        excelElementsLinkedHashMap = new LinkedHashMap<>(16);
     }
 
-    public static <T> AnnotatedClassParser<T> of(Class<T> tClass) {
-        ExcelTabulation tabulation = Objects.requireNonNull(
+    public static <T> TableDefinitionFactory<T> of(Class<T> tClass) {
+        /**
+         * 获取配置主注解
+         */
+        ExcelTabulation excelTabulation = Objects.requireNonNull(
                 Objects.requireNonNull(tClass,
                         "Invalid configuration bean, the configuration bean is null!").getDeclaredAnnotation(ExcelTabulation.class),
                 "Invalid configuration bean, The beans must be annotated with the " + ExcelTabulation.class.getName()
         );
-        AnnotatedClassParser<T> parser = new AnnotatedClassParser<T>();
+
+        /**
+         * 获取列注解， 包括ExcelColumn 和 ExcelValidation
+         */
+        Field[] declaredFields = tClass.getDeclaredFields();
+
+
+        /**
+         * 获取其他配置项， 包括风格定义，合并区域定义， 文本框定义， 图片定义等
+         */
+        TableDefinitionFactory<T> parser = new TableDefinitionFactory<T>();
         Annotation[] annotations = tClass.getDeclaredAnnotations();
         for (Annotation annotation : annotations) {
             ExcelElements excelElements;
             if ((excelElements = annotation.getClass().getDeclaredAnnotation(ExcelElements.class)) != null) {
-                Class<? extends ElementParser> parserClass = excelElements.parser();
-//                parser.parseTasks.put(annotation, parserClass);
+                parser.excelElementsLinkedHashMap.put(annotation, excelElements);
             }
         }
-        Field[] declaredFields = tClass.getDeclaredFields();
+
 
         /**
          * TODO 统一封装成 ParseTask，利用异步解析完成解析工作。
@@ -68,18 +80,19 @@ public class AnnotatedClassParser<T> {
          *
          */
 
-        return new AnnotatedClassParser<T>();
+        return new TableDefinitionFactory<T>();
     }
 
     /**
      * 是否是默认的注解, TODO 性能问题
      */
     public boolean isDefaultAnnotation(Annotation annotation) throws NoSuchFieldException, IllegalAccessException {
-        Map<String, Object> defaultMemberValues = AnnotationType.getInstance(annotation.annotationType()).memberDefaults();
-        Object handler = Proxy.getInvocationHandler(annotation);
-        Field field = handler.getClass().getDeclaredField("memberValues");
-        Map<String, Object> memberValues = (Map<String, Object>) field.get(handler);
-        return defaultMemberValues.equals(memberValues);
+//        Map<String, Object> defaultMemberValues = AnnotationType.getInstance(annotation.annotationType()).memberDefaults();
+//        Object handler = Proxy.getInvocationHandler(annotation);
+//        Field field = handler.getClass().getDeclaredField("memberValues");
+//        Map<String, Object> memberValues = (Map<String, Object>) field.get(handler);
+//        return defaultMemberValues.equals(memberValues);
+        return false;
     }
 
 }

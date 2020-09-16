@@ -1,8 +1,6 @@
 package cn.kerninventor.doexcel.elements.caption;
 
 
-import cn.kerninventor.doexcel.elements.style.Style;
-
 import java.lang.annotation.*;
 
 /**
@@ -27,7 +25,7 @@ public @interface Line {
      * 风格订阅
      * @return
      */
-    Style lineStyle() default @Style;
+    int styleSubs() default -1;
 
     /**
      * 行数

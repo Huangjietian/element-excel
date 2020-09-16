@@ -1,4 +1,4 @@
-package cn.kerninventor.doexcel.definitions;
+package cn.kerninventor.doexcel.definition;
 
 import java.lang.reflect.Field;
 

@@ -1,13 +1,16 @@
 package cn.kerninventor.doexcel.elements.caption;
 
 
-import cn.kerninventor.doexcel.elements.style.Style;
+import java.lang.annotation.*;
 
 /**
  * <p>一句话描述</p>
  *
  * @author Kern
  */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
 public @interface MultiLine {
 
     Line[] value();
@@ -16,6 +19,6 @@ public @interface MultiLine {
      * 风格订阅
      * @return
      */
-    Style globalStyle() default @Style;
+    int globalStyleSubs() default -1;
 
 }

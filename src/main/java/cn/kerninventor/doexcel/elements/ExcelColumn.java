@@ -39,11 +39,16 @@ public @interface ExcelColumn {
     String formula() default "";
 
     /**
-     * 风格订阅
+     * 表头风格订阅
      * @return
      */
-    int styleSubs() default 0;
+    int theadStyleSubs() default -1;
 
+    /**
+     * 表体风格订阅
+     * @return
+     */
+    int tbodyStyleSubs() default -1;
 
 //    /**
 //     * 定义列的单元格写入器 默认提供的几种单元格写入器请参考 {@link CellsWriter}

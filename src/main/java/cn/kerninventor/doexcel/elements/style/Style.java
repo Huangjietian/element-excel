@@ -20,6 +20,12 @@ import java.lang.annotation.*;
 public @interface Style {
 
     /**
+     * 风格下标
+     * @return
+     */
+    int value();
+
+    /**
      * 风格字体
      * @see Font
      * @return
