@@ -16,7 +16,7 @@ public @interface StyleGroup {
 
     int value() default 0;
 
-    Style headStyle() default @Style(font = @Font(fontName = "Arial Black", fontSize = 12));
+    Style headStyle() default @Style(value = 1, font = @Font(fontName = "Arial Black", fontSize = 12));
 
-    Style bodyStyle() default @Style;
+    Style bodyStyle() default @Style(1);
 }

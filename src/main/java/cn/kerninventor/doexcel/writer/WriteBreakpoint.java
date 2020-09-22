@@ -11,4 +11,8 @@ import cn.kerninventor.doexcel.constants.DocumentType;
 public interface WriteBreakpoint {
 
     <T> Writer<T> resume(Class<T> tClass, DocumentType documentType);
+
+    default <T> Writer<T> resume(Class<T> tClass) {
+        return resume(tClass, DocumentType.XLSX);
+    }
 }
