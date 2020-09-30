@@ -10,10 +10,14 @@ import cn.kerninventor.doexcel.elements.ExcelTabulation;
 public class TableDefinition {
 
     private ExcelTabulation tableAnnotation;
-    private int rowPoint; //行指针
-    private int colPoint; //列指针
-
-
+    /**
+     * 行指针
+     */
+    private int rowPoint;
+    /**
+     * 列指针
+     */
+    private int colPoint;
 
     /**
      * 根据写任务按照起始指针排序，先行后列

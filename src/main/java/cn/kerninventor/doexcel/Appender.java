@@ -27,7 +27,7 @@ public abstract class Appender {
         return new LocalFileAppender(file);
     }
 
-    static class HttpResponseAppender extends Appender {
+    private static class HttpResponseAppender extends Appender {
         HttpServletResponse response;
 
         HttpResponseAppender(HttpServletResponse response) {
@@ -40,7 +40,7 @@ public abstract class Appender {
         }
     }
 
-    static class LocalFileAppender extends Appender {
+    private static class LocalFileAppender extends Appender {
         File localFile;
 
         LocalFileAppender(File localFile) {
