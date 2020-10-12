@@ -1,5 +1,7 @@
 package cn.kerninventor.doexcel.elements;
 
+import cn.kerninventor.doexcel.writer.CellValueWriter;
+
 import java.lang.annotation.*;
 
 /**
@@ -38,25 +40,17 @@ public @interface ExcelColumn {
      */
     String formula() default "";
 
-    /**
-     * 表头风格订阅
-     * @return
-     */
-    int theadStyleSubs() default -1;
 
     /**
-     * 表体风格订阅
+     * 定义列的单元格写入器 默认提供的几种单元格写入器请参考 {@link CellValueWriter}
      * @return
      */
-    int tbodyStyleSubs() default -1;
+    Class<? extends CellValueWriter> cellsWriter() default CellValueWriter.class;
 
-//    /**
-//     * 定义列的单元格写入器 默认提供的几种单元格写入器请参考 {@link CellsWriter}
-//     * @return
-//     */
-//    Class<? extends CellsWriter> cellsWriter() default CellsGeneralWriter.class;
 
-//    /**
+
+
+//    /** TODO 最好是独立出注解在字段上
 //     * 定义列的字段值翻译器。 如果你指定了某个 {@link ColumnDataTranslate#translator()}, 并置 {@link ColumnDataTranslate#open()} = true <br/>
 //     * 那么你需要在对应的读写器中添加对应的 {@link ColumnDataTranslator},<br/>
 //     * 例如

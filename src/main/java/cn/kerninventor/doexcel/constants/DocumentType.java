@@ -1,9 +1,5 @@
 package cn.kerninventor.doexcel.constants;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 /**
  * <p>
  *     Excel document type enums.
@@ -25,14 +21,6 @@ public enum  DocumentType {
 
     public String getDescription() {
         return description;
-    }
-
-    public Workbook createWorkbook() {
-        if (DocumentType.XLSX == this) {
-            return new XSSFWorkbook();
-        } else {
-            return new HSSFWorkbook();
-        }
     }
 
     @Override

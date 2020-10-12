@@ -2,6 +2,8 @@ package cn.kerninventor.doexcel.definition;
 
 import cn.kerninventor.doexcel.elements.ExcelTabulation;
 
+import java.util.List;
+
 /**
  * <p>一句话描述</p>
  *
@@ -9,10 +11,10 @@ import cn.kerninventor.doexcel.elements.ExcelTabulation;
  */
 public class TableDefinition {
 
-    private ExcelTabulation tableAnnotation;
+    private ExcelTabulation excelTabulation;
     private int rowPoint; //行指针
     private int colPoint; //列指针
-
+    private List<ColumnDefinition> columnDefinitions;
 
 
     /**

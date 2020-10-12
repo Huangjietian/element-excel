@@ -37,7 +37,7 @@ public class MainTest {
          * 获取表头行下标，验证表头行下标是否正确
          * 初始化Bean实例， 获取数据行起始下标，读取原始数据， 操作原始数据， 根据列下标读取数据并赋值到对应Bean实例中
          */
-        ExcelKit.callWriter(MainTest.class, DocumentType.XLSX).overwrite(true).output(Appender.of(""))
+        ExcelKit.callWriter(MainTest.class).overwrite(true).output(Appender.of(""))
         .resume(Object.class, DocumentType.XLS).convert().breakOff();
 
     }

@@ -1,11 +1,9 @@
 package cn.kerninventor.doexcel.definition;
 
-import cn.kerninventor.doexcel.elements.ExcelElements;
 import cn.kerninventor.doexcel.elements.ExcelTabulation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.LinkedHashMap;
 import java.util.Objects;
 
 /**
@@ -15,16 +13,12 @@ import java.util.Objects;
  *
  * @author Kern
  */
-public class TableDefinitionFactory<T> {
+public class ComponentFactory<T> {
 
-    private LinkedHashMap<Annotation, ExcelElements> excelElementsLinkedHashMap ;
+
     private T t;
 
-    private TableDefinitionFactory() {
-        excelElementsLinkedHashMap = new LinkedHashMap<>(16);
-    }
-
-    public static <T> TableDefinitionFactory<T> of(Class<T> tClass) {
+    public static <T> ComponentFactory<T> of(Class<T> tClass) {
         /**
          * 获取配置主注解
          */
@@ -40,17 +34,6 @@ public class TableDefinitionFactory<T> {
         Field[] declaredFields = tClass.getDeclaredFields();
 
 
-        /**
-         * 获取其他配置项， 包括风格定义，合并区域定义， 文本框定义， 图片定义等
-         */
-        TableDefinitionFactory<T> parser = new TableDefinitionFactory<T>();
-        Annotation[] annotations = tClass.getDeclaredAnnotations();
-        for (Annotation annotation : annotations) {
-            ExcelElements excelElements;
-            if ((excelElements = annotation.getClass().getDeclaredAnnotation(ExcelElements.class)) != null) {
-                parser.excelElementsLinkedHashMap.put(annotation, excelElements);
-            }
-        }
 
 
         /**
@@ -80,7 +63,7 @@ public class TableDefinitionFactory<T> {
          *
          */
 
-        return new TableDefinitionFactory<T>();
+        return new ComponentFactory<T>();
     }
 
     /**

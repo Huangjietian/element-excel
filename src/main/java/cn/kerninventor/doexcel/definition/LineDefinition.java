@@ -1,6 +1,5 @@
 package cn.kerninventor.doexcel.definition;
 
-import cn.kerninventor.doexcel.constants.StyleType;
 import org.apache.poi.ss.usermodel.CellStyle;
 
 /**
@@ -8,9 +7,12 @@ import org.apache.poi.ss.usermodel.CellStyle;
  *
  * @author Kern
  */
-public class StyleDefinition {
+public class LineDefinition {
 
-    private int index;
-    private StyleType type;
+    private int col1;
+    private int col2;
+    private int col3;
+    private int col4;
+    private String value;
     private CellStyle cellStyle;
 }
