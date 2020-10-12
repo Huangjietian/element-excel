@@ -12,10 +12,16 @@ import java.util.List;
 public class TableDefinition {
 
     private ExcelTabulation excelTabulation;
-    private int rowPoint; //行指针
-    private int colPoint; //列指针
-    private List<ColumnDefinition> columnDefinitions;
+    /**
+     * 行指针
+     */
+    private int rowPoint;
+    /**
+     * 列指针
+     */
+    private int colPoint;
 
+    private List<ColumnDefinition> columnDefinitions;
 
     /**
      * 根据写任务按照起始指针排序，先行后列
