@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements;
 
+import java.lang.annotation.*;
+
 /**
  * <p>
  *     元素
@@ -7,5 +9,9 @@ package cn.kerninventor.excel.core.user.elements;
  *
  * @author Kern
  */
-public interface Element {
+@Documented
+@Inherited
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.ANNOTATION_TYPE)
+public @interface Element {
 }

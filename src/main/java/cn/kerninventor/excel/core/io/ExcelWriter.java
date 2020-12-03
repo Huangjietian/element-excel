@@ -16,7 +16,7 @@ public class ExcelWriter<T> implements Writer<T> {
     }
 
     @Override
-    public Reader<T> convert() {
+    public Reader<T> swerve() {
         return null;
     }
 

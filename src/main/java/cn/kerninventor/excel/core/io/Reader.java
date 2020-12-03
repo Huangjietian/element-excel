@@ -10,7 +10,7 @@ import cn.kerninventor.excel.core.io.Writer;
  */
 public interface Reader<T> {
 
-    Writer<T> convert();
+    Writer<T> swerve();
 
 //    Reader<T> read(ReadingSupervisor supervisor, ReadResult<T> readResult);
 //

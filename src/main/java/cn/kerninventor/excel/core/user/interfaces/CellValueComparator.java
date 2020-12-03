@@ -7,7 +7,7 @@ package cn.kerninventor.excel.core.user.interfaces;
  *
  * @author Kern
  */
-public interface ColumnFieldComparator<T> {
+public interface CellValueComparator<T> {
 
-    boolean equals(T t1, T t2);
+    boolean compare(T o1, T o2);
 }

@@ -1,15 +1,18 @@
 package cn.kerninventor.excel.core.user.elements;
 
-import cn.kerninventor.excel.core.user.impl.DefaultColumnFieldComparator;
-import cn.kerninventor.excel.core.user.interfaces.ColumnFieldComparator;
+import cn.kerninventor.excel.core.user.impl.DefaultCellValueComparator;
+import cn.kerninventor.excel.core.user.interfaces.CellValueComparator;
 
-import java.util.Comparator;
+import java.lang.annotation.*;
 
 /**
  * <p>一句话描述</p>
  *
  * @author Kern
  */
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
 public @interface Merge {
 
     /**
@@ -32,9 +35,9 @@ public @interface Merge {
 
     /**
      *
-     * 定义比较器,使用该比较器进行相符判断,对于复杂对象,可以实现 {@link ColumnFieldComparator}接口,并在该处声明
+     * 定义比较器,使用该比较器进行相符判断,对于复杂对象,可以实现 {@link CellValueComparator}接口,并在该处声明
      * @return
      */
-    Class<? extends ColumnFieldComparator> comparator() default DefaultColumnFieldComparator.class;
+    Class<? extends CellValueComparator> comparator() default DefaultCellValueComparator.class;
 
 }

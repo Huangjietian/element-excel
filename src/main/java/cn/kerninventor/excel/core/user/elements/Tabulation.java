@@ -10,8 +10,8 @@ import java.lang.annotation.*;
  * @author Kern
  */
 @Documented
-@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE})
 public @interface Tabulation {
 
     /**

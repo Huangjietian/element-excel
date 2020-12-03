@@ -21,7 +21,7 @@ public interface Writer<T> {
      */
     Writer<T> overwrite(boolean overwrite);
 
-    Reader<T> convert();
+    Reader<T> swerve();
 
     WriteBreakpoint breakOff();
 

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  *
  * @author Kern
  */
-public final class WritingSupervisor {
+public final class WritingMonitor {
 
     private Map<CellStyle, String[]> columnStyleMatchList;
     private Map<Predicate, List<String>> predicateIgnoredColumnList = new LinkedHashMap<>();
@@ -21,7 +21,7 @@ public final class WritingSupervisor {
      * @param columnNames
      * @return
      */
-    public WritingSupervisor ignore(String... columnNames) {
+    public WritingMonitor ignore(String... columnNames) {
         return ignore(null, columnNames);
     }
 
@@ -31,7 +31,7 @@ public final class WritingSupervisor {
      * @param columnNames
      * @return
      */
-    public WritingSupervisor ignore(Predicate predicate, String... columnNames) {
+    public WritingMonitor ignore(Predicate predicate, String... columnNames) {
         predicate = predicate == null ? e -> false : predicate;
         predicateIgnoredColumnList.put(predicate, Arrays.stream(columnNames).filter(e -> e != null && !"".equals(e.trim())).collect(Collectors.toList()));
         return this;
@@ -43,7 +43,7 @@ public final class WritingSupervisor {
      * @param columnNames
      * @return
      */
-    public WritingSupervisor setColumnsStyle(CellStyle style, String columnNames) {
+    public WritingMonitor setColumnsStyle(CellStyle style, String columnNames) {
         return this;
     }
 

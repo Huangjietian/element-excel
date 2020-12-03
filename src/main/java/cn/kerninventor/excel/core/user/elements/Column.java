@@ -14,8 +14,8 @@ import java.lang.annotation.*;
  * @author Kern
  */
 @Documented
-@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD})
 public @interface Column {
 
     /**

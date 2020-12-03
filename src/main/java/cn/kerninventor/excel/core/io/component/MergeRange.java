@@ -17,4 +17,7 @@ public class MergeRange {
     private int lastColIndex;
     private int firstRowIndex;
     private int lastRowIndex;
+
+
+
 }
