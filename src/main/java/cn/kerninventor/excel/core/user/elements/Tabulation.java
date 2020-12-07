@@ -55,4 +55,16 @@ public @interface Tabulation {
      * @return
      */
     int maximumColumnsWidth() default 255;
+
+    /**
+     * 设置行冻结点
+     * @return
+     */
+    int rowFreezePoint() default 0;
+
+    /**
+     * 设置列冻结点
+     * @return
+     */
+    int columnFreezePoint() default 0;
 }

@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Merge {
+public @interface MergeColumn {
 
     /**
      * 基于对应字段名的列进行合并
