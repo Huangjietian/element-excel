@@ -7,11 +7,19 @@ package cn.kerninventor.excel.core.constants;
  *
  * @author Kern
  */
-public enum  StyleScopeEnum {
+public enum StyleScope {
 
-    TABULATION,
+    /**
+     * 作用域：表头
+     */
     THEAD,
+    /**
+     * 作用域：表体
+     */
     TBODY,
+    /**
+     * 作用域区域元素
+     */
     RANGE,
     ;
 

@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements;
 
 
+import cn.kerninventor.excel.core.constants.StyleScope;
 import cn.kerninventor.excel.core.user.impl.DefaultCellValueWriter;
 import cn.kerninventor.excel.core.user.interfaces.CellValueWriter;
 
@@ -50,7 +51,15 @@ public @interface Column {
      */
     Class<? extends CellValueWriter> cellsWriter() default DefaultCellValueWriter.class;
 
-
-
+    /**
+     * 风格订阅
+     * 通常情况下，该数组的最后一个整数指向风格元素中作用域为{@link StyleScope#TBODY}的风格下标
+     * 前面的多个整数应同{@link #value()}的数量保持一致，并代表 Value() 代表的每一个表头的风格
+     * 例如
+     * {@code  @Column(value = "表头1, 表头2", styleSub = "0, 0, 0")}
+     * 则 该列的表头行第一行将适配到作用域 {@link StyleScope#THEAD}的第0个元素
+     * @return
+     */
+    int[] styleSub() default {0,0};
 
 }
