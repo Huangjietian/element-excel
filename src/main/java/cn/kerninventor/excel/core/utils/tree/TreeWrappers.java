@@ -30,7 +30,7 @@ public class TreeWrappers <E> implements Serializable {
 
     /**
      * <p>
-     *     无侵入的Tree包装方法，通过{@link Function<E,K>}函数指定对象的父子节点。<br/>
+     *     无侵入的Tree包装方法，通过{@link Function <E,K>}函数指定对象的父子节点。<br/>
      *     传入对象集合，可以获得一个{@link TreeWrappers <E>}实例，表示了该集合的树状结构。<br/>
      *     可以通过{@link TreeRootStrategy<E>}参数指定根部策略
      * </p>
@@ -88,7 +88,7 @@ public class TreeWrappers <E> implements Serializable {
 
     /**
      * 园艺工人
-     * 引入的 {@link Consumer< TreeNode  <E>> gardener} 将对最终返回的 {@link TreeNode <E>} 类进行消费操作
+     * 引入的 {@link Consumer < TreeNode  <E>> gardener} 将对最终返回的 {@link TreeNode <E>} 类进行消费操作
      * {@link TreeNode#setResult(Object)} 将支持接收一个结果集用于存储可能的消费结果
      * @param gardener  对tree类的消费操作定义
      * @return
@@ -100,7 +100,7 @@ public class TreeWrappers <E> implements Serializable {
 
     /**
      * 园艺工人
-     * 引入的 {@link Consumer< TreeNode  <E>> gardener} 将对最终返回的 {@link TreeNode <E>} 类进行消费操作
+     * 引入的 {@link Consumer < TreeNode  <E>> gardener} 将对最终返回的 {@link TreeNode <E>} 类进行消费操作
      * {@link TreeNode#setResult(Object)} 将支持接收一个结果集用于存储可能的消费结果
      * @param gardener  对tree类的消费操作定义
      * @param predicate 对断言为true的资源进行该操作，传入{@code true}时将默认对所有资源进行递归操作

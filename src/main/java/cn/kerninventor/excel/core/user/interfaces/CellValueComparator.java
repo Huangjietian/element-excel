@@ -2,7 +2,7 @@ package cn.kerninventor.excel.core.user.interfaces;
 
 /**
  * <p>
- *     列字段比较器
+ *     单元格值比较器
  * </p>
  *
  * @author Kern

@@ -35,16 +35,8 @@ public class TreeNode<E> implements Serializable {
         return nodeInfo;
     }
 
-    public void setNodeInfo(E nodeInfo) {
-        this.nodeInfo = nodeInfo;
-    }
-
     public List<TreeNode<E>> getBranches() {
         return branches;
-    }
-
-    public void setBranches(List<TreeNode<E>> branches) {
-        this.branches = branches;
     }
 
     public Object getResult() {
@@ -87,5 +79,10 @@ public class TreeNode<E> implements Serializable {
         }
         gardener.accept(this);
         getBranches().forEach(e -> e.fullGardening(gardener, predicate));
+    }
+
+    @Override
+    public String toString() {
+        return nodeKey.toString();
     }
 }

@@ -1,5 +1,6 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
+import cn.kerninventor.excel.core.constants.StyleScope;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
@@ -20,10 +21,10 @@ import java.lang.annotation.*;
 public @interface Style {
 
     /**
-     * 风格下标
+     * 风格的适用范围
      * @return
      */
-    int value();
+    StyleScope scope();
 
     /**
      * 风格字体

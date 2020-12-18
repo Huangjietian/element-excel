@@ -9,7 +9,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *     Excel工具
+ * </p>
  *
  * @author Kern
  */

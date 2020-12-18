@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
+import cn.kerninventor.excel.core.constants.StyleScope;
+
 /**
  * <p>
  *     风格发布
@@ -9,5 +11,6 @@ package cn.kerninventor.excel.core.user.elements.style;
  */
 public @interface StylesPublish {
 
+    Style[] value() default {};
 
 }

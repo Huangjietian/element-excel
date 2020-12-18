@@ -9,14 +9,21 @@ import org.apache.poi.ss.usermodel.FontUnderline;
  *     字体生成器
  * </p>
  * @author Kern
- * @version 1.0
  */
 public final class FontBuilder {
 
     private Font font;
 
-    FontBuilder(Font font) {
+    public FontBuilder(Font font) {
         this.font = font;
+    }
+
+    /**
+     * 获取字体
+     * @return
+     */
+    public Font get(){
+        return font;
     }
 
     /**
@@ -97,13 +104,5 @@ public final class FontBuilder {
     public FontBuilder setCharSet(byte fontCharset) {
         font.setCharSet(fontCharset);
         return this;
-    }
-
-    /**
-     * 获取字体
-     * @return
-     */
-    public Font get(){
-        return font;
     }
 }

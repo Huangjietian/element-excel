@@ -8,7 +8,6 @@ import org.apache.poi.ss.usermodel.*;
  *     风格生成器
  * </p>
  * @author Kern
- * @version 1.0
  */
 public final class StyleBuilder {
 
