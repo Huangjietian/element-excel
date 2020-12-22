@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *     文档源
+ * </p>
  *
  * @author Kern
  */

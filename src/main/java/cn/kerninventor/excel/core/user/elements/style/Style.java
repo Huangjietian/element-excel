@@ -16,6 +16,7 @@ import java.lang.annotation.*;
  * @author Kern
  */
 @Documented
+@Repeatable(Style.List.class)
 @Target(ElementType.TYPE_PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Style {
@@ -92,5 +93,15 @@ public @interface Style {
      * @return
      */
     boolean hidden() default false;
+
+
+
+
+
+    @Target(ElementType.TYPE_PARAMETER)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface List {
+        Style[] value();
+    }
 
 }
