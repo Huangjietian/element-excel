@@ -28,9 +28,9 @@ public @interface Section {
     int styleSubs() default -1;
 
     /**
-     * 结束列
+     * 占据的列数
      * @return
      */
-    int colEnd() default Integer.MAX_VALUE;
+    int colLength() default Integer.MAX_VALUE;
 
 }
