@@ -28,7 +28,7 @@ public @interface MergeColumn {
     boolean mergeOfEmptyValues() default false;
 
     /**
-     * 是否对String类型的字段进行 {@link String#trim()}
+     * 是否对String类型的字段进行 {@link java.lang.String#trim()}
      * @return
      */
     boolean trimOfValue() default true;

@@ -1,6 +1,7 @@
-package cn.kerninventor.excel.core.io;
+package cn.kerninventor.excel.core.io.writer;
 
-import cn.kerninventor.excel.core.Appender;
+import cn.kerninventor.excel.core.StreamAppender;
+import cn.kerninventor.excel.core.io.reader.Reader;
 
 /**
  * <p>一句话描述</p>
@@ -26,7 +27,7 @@ public class ExcelWriter<T> implements Writer<T> {
     }
 
     @Override
-    public WriteBreakpoint output(Appender... appenderArr) {
+    public WriteBreakpoint output(StreamAppender... streamAppenderArr) {
         return null;
     }
 

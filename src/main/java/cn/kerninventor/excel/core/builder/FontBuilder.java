@@ -1,4 +1,4 @@
-package cn.kerninventor.excel.core.utils;
+package cn.kerninventor.excel.core.builder;
 
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Font;
@@ -6,13 +6,13 @@ import org.apache.poi.ss.usermodel.FontUnderline;
 
 /**
  * <p>
- *     字体生成器
+ *     字体生成器，基于POI提供的{@link Font}接口提供流式编程范式
  * </p>
  * @author Kern
  */
 public final class FontBuilder {
 
-    private Font font;
+    private final Font font;
 
     public FontBuilder(Font font) {
         this.font = font;

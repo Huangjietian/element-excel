@@ -1,7 +1,7 @@
-package cn.kerninventor.excel.core.io;
+package cn.kerninventor.excel.core.io.reader;
 
 
-import cn.kerninventor.excel.core.io.Writer;
+import cn.kerninventor.excel.core.io.writer.Writer;
 
 /**
  * <p>一句话描述</p>

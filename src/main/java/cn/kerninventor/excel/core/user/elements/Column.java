@@ -49,7 +49,7 @@ public @interface Column {
      * 定义列的单元格写入器 默认提供的几种单元格写入器请参考 {@link CellValueWriter}
      * @return
      */
-    Class<? extends CellValueWriter> cellsWriter() default DefaultCellValueWriter.class;
+    Class<? extends CellValueWriter> cellWriter() default DefaultCellValueWriter.class;
 
     /**
      * 风格订阅

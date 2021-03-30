@@ -9,9 +9,10 @@ import java.util.List;
  *
  * @author Kern
  */
-public class TableDefinition {
+public class TabulationDefinition {
 
     private Tabulation tabulation;
+
     /**
      * 行指针
      */

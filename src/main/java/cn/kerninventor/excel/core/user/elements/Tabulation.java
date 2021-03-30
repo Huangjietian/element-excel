@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements;
 
+import cn.kerninventor.excel.core.user.elements.style.Style;
+
 import java.lang.annotation.*;
 
 /**
@@ -67,4 +69,6 @@ public @interface Tabulation {
      * @return
      */
     int columnFreezePoint() default 0;
+
+
 }

@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.io.component;
 
 import cn.kerninventor.excel.core.user.elements.Tabulation;
+import cn.kerninventor.excel.core.utils.Assert;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -22,17 +23,15 @@ public class ComponentFactory<T> {
         /**
          * 获取配置主注解
          */
-        Tabulation tabulation = Objects.requireNonNull(
-                Objects.requireNonNull(tClass,
-                        "Invalid configuration bean, the configuration bean is null!").getDeclaredAnnotation(Tabulation.class),
-                "Invalid configuration bean, The beans must be annotated with the " + Tabulation.class.getName()
-        );
+        Assert.notNull(tClass, "配置类Class对象不能为空");
+        Tabulation tabulation = tClass.getDeclaredAnnotation(Tabulation.class);
+        Assert.notNull(tabulation, "错误的配置类, 配置类必须添加如下注解： " + Tabulation.class.getName());
 
         /**
          * 获取列注解， 包括ExcelColumn 和 ExcelValidation
          */
         Field[] declaredFields = tClass.getDeclaredFields();
-
+        Assert.isTrue(declaredFields.length > 0, "配置类没有任何字段可加载");
 
 
 

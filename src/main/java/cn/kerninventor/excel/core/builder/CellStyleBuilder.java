@@ -1,19 +1,19 @@
-package cn.kerninventor.excel.core.utils;
+package cn.kerninventor.excel.core.builder;
 
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 
 /**
  * <p>
- *     风格生成器
+ *     风格生成器，基于POI提供的{@link CellStyle}接口提供流式编程范式
  * </p>
  * @author Kern
  */
-public final class StyleBuilder {
+public final class CellStyleBuilder {
 
-    private CellStyle cellStyle;
+    private final CellStyle cellStyle;
 
-    public StyleBuilder(CellStyle cellStyle) {
+    public CellStyleBuilder(CellStyle cellStyle) {
         this.cellStyle = cellStyle;
     }
 
@@ -30,7 +30,7 @@ public final class StyleBuilder {
      * @param font
      * @return
      */
-    public StyleBuilder setFont(Font font) {
+    public CellStyleBuilder setFont(Font font) {
         cellStyle.setFont(font);
         return this;
     }
@@ -41,7 +41,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setTopBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
+    public CellStyleBuilder setTopBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
         if (borderStyle != null){
             cellStyle.setBorderTop(borderStyle);
         }
@@ -57,7 +57,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setBottomBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
+    public CellStyleBuilder setBottomBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
         if (borderStyle != null){
             cellStyle.setBorderBottom(borderStyle);
         }
@@ -73,7 +73,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setLeftBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
+    public CellStyleBuilder setLeftBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
         if (borderStyle != null){
             cellStyle.setBorderLeft(borderStyle);
         }
@@ -89,7 +89,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setRightBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
+    public CellStyleBuilder setRightBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined){
         if (borderStyle != null){
             cellStyle.setBorderRight(borderStyle);
         }
@@ -105,7 +105,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setSurroundBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined) {
+    public CellStyleBuilder setSurroundBorder(BorderStyle borderStyle, HSSFColor.HSSFColorPredefined hssfColorPredefined) {
         if (borderStyle != null) {
             cellStyle.setBorderTop(borderStyle);
             cellStyle.setBorderBottom(borderStyle);
@@ -126,7 +126,7 @@ public final class StyleBuilder {
      * @param fillPatternType
      * @return
      */
-    public StyleBuilder setFillPattern(FillPatternType fillPatternType) {
+    public CellStyleBuilder setFillPattern(FillPatternType fillPatternType) {
         cellStyle.setFillPattern(fillPatternType);
         return this;
     }
@@ -136,7 +136,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setFillBackgroundColor(HSSFColor.HSSFColorPredefined hssfColorPredefined) {
+    public CellStyleBuilder setFillBackgroundColor(HSSFColor.HSSFColorPredefined hssfColorPredefined) {
         cellStyle.setFillBackgroundColor(hssfColorPredefined.getIndex());
         return this;
     }
@@ -146,7 +146,7 @@ public final class StyleBuilder {
      * @param hssfColorPredefined
      * @return
      */
-    public StyleBuilder setFillForegroundColor(HSSFColor.HSSFColorPredefined hssfColorPredefined) {
+    public CellStyleBuilder setFillForegroundColor(HSSFColor.HSSFColorPredefined hssfColorPredefined) {
         cellStyle.setFillForegroundColor(hssfColorPredefined.getIndex());
         return this;
     }
@@ -156,7 +156,7 @@ public final class StyleBuilder {
      * @param verticalAlignment
      * @return
      */
-    public StyleBuilder setVerticalAlignment(VerticalAlignment verticalAlignment) {
+    public CellStyleBuilder setVerticalAlignment(VerticalAlignment verticalAlignment) {
         cellStyle.setVerticalAlignment(verticalAlignment);
         return this;
     }
@@ -166,7 +166,7 @@ public final class StyleBuilder {
      * @param horizontalAlignment
      * @return
      */
-    public StyleBuilder setAlignment(HorizontalAlignment horizontalAlignment) {
+    public CellStyleBuilder setAlignment(HorizontalAlignment horizontalAlignment) {
         cellStyle.setAlignment(horizontalAlignment);
         return this;
     }
@@ -175,7 +175,7 @@ public final class StyleBuilder {
      * 设置完全居中
      * @return
      */
-    public StyleBuilder setWholeCenter() {
+    public CellStyleBuilder setWholeCenter() {
         setVerticalAlignment(VerticalAlignment.CENTER).setAlignment(HorizontalAlignment.CENTER);
         return this;
     }
@@ -185,7 +185,7 @@ public final class StyleBuilder {
      * @param wrapText
      * @return
      */
-    public StyleBuilder setWrapText(boolean wrapText) {
+    public CellStyleBuilder setWrapText(boolean wrapText) {
         cellStyle.setWrapText(wrapText);
         return this;
     }
@@ -195,7 +195,7 @@ public final class StyleBuilder {
      * @param locked
      * @return
      */
-    public StyleBuilder setLocked(boolean locked) {
+    public CellStyleBuilder setLocked(boolean locked) {
         cellStyle.setLocked(locked);
         return this;
     }
@@ -205,7 +205,7 @@ public final class StyleBuilder {
      * @param indention
      * @return
      */
-    public StyleBuilder setIndention(short indention) {
+    public CellStyleBuilder setIndention(short indention) {
         cellStyle.setIndention(indention);
         return this;
     }
@@ -215,7 +215,7 @@ public final class StyleBuilder {
      * @param hidden
      * @return
      */
-    public StyleBuilder setHidden(Boolean hidden) {
+    public CellStyleBuilder setHidden(Boolean hidden) {
         cellStyle.setHidden(hidden);
         return this;
     }
@@ -225,7 +225,7 @@ public final class StyleBuilder {
      * @param index
      * @return
      */
-    public StyleBuilder setDataFormat(short index) {
+    public CellStyleBuilder setDataFormat(short index) {
         cellStyle.setDataFormat(index);
         return this;
     }

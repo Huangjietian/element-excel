@@ -1,8 +1,8 @@
 package cn.kerninventor.excel.core;
 
 import cn.kerninventor.excel.core.constants.DocumentType;
-import cn.kerninventor.excel.core.io.Reader;
-import cn.kerninventor.excel.core.io.Writer;
+import cn.kerninventor.excel.core.io.reader.Reader;
+import cn.kerninventor.excel.core.io.writer.Writer;
 import cn.kerninventor.excel.core.io.component.ComponentFactory;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -10,12 +10,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * <p>
- *     Excel工具
+ *     Beeper. Simple Method Factory!
  * </p>
  *
  * @author Kern
  */
-public class ExcelKit {
+public class ExcelBeeper {
 
     public static <T> Writer<T> callWriter(Class<T> tClass) {
         return callWriter(tClass, DocumentType.XLSX);
@@ -23,17 +23,18 @@ public class ExcelKit {
 
     public static <T> Writer<T> callWriter(Class<T> tClass, DocumentType documentType) {
         Workbook workbook;
-        if (DocumentType.XLSX == documentType) {
-            workbook = new XSSFWorkbook();
-        } else {
-            workbook = new HSSFWorkbook();
+        switch (documentType) {
+            case XLS:
+                workbook = new HSSFWorkbook();
+                break;
+            default:
+                workbook = new XSSFWorkbook();
         }
         ComponentFactory parser = ComponentFactory.of(tClass);
         return null;
     }
 
-    public static <T> Reader<T> callReader(Class<T> tClass, DocumentSource source) {
-        Workbook workbook = source.getWorkbook();
+    public static <T> Reader<T> callReader(Class<T> tClass, Workbook workbook) {
         ComponentFactory parser = ComponentFactory.of(tClass);
         return null;
     }

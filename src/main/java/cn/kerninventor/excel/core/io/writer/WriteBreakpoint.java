@@ -1,10 +1,12 @@
-package cn.kerninventor.excel.core.io;
+package cn.kerninventor.excel.core.io.writer;
 
 
 import cn.kerninventor.excel.core.constants.DocumentType;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *     写时中断
+ * </p>
  *
  * @author Kern
  */
