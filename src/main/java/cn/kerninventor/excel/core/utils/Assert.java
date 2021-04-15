@@ -12,6 +12,10 @@ import java.util.function.Supplier;
  */
 public class Assert {
 
+    public static <E> E notNull(E object) {
+        return notNull(object, new NullPointerException(object.getClass().getName() + "is not present!"));
+    }
+
     public static <E> E notNull(E object, String message) {
         return notNull(object, new NullPointerException(message));
     }

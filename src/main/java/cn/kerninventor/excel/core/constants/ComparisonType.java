@@ -6,7 +6,7 @@ import org.apache.poi.ss.usermodel.DataValidationConstraint;
  * @author Kern
  * @version 1.0
  */
-public enum ComparisionType {
+public enum ComparisonType {
 
     BET(" <> ",    DataValidationConstraint.OperatorType.BETWEEN,          true),
     NOT_BET(" >< ",DataValidationConstraint.OperatorType.NOT_BETWEEN,      true),
@@ -22,7 +22,7 @@ public enum ComparisionType {
     private int code;
     private boolean isNeedValue2;
 
-    ComparisionType(String expression, int code, boolean isNeedValue2) {
+    ComparisonType(String expression, int code, boolean isNeedValue2) {
         this.expression = expression;
         this.code = code;
         this.isNeedValue2 = isNeedValue2;

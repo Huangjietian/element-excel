@@ -22,12 +22,6 @@ import java.lang.annotation.*;
 public @interface Style {
 
     /**
-     * 风格的适用范围
-     * @return
-     */
-    StyleScope scope();
-
-    /**
      * 风格字体
      * @see Font
      * @return
@@ -95,9 +89,7 @@ public @interface Style {
     boolean hidden() default false;
 
 
-
-
-
+    @Documented
     @Target(ElementType.TYPE_PARAMETER)
     @Retention(RetentionPolicy.RUNTIME)
     @interface List {

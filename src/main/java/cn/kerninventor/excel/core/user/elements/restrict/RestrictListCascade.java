@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
+import java.lang.annotation.*;
+
 /**
  * <p>
  *     级联
@@ -7,6 +9,10 @@ package cn.kerninventor.excel.core.user.elements.restrict;
  *
  * @author Kern
  */
+@RestrictColumn(supportTypes = Object.class)
+@Documented
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictListCascade {
 
     /**

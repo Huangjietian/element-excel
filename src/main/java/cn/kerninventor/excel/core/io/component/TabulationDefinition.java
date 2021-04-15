@@ -11,7 +11,15 @@ import java.util.List;
  */
 public class TabulationDefinition {
 
-    private Tabulation tabulation;
+    private float theadRowHeight;
+    private float tbodyRowHeight;
+    private int startRowIndex;
+    private int startColumnIndex;
+    private int effectiveRows;
+    private int minimumColumnsWidth;
+    private int maximumColumnsWidth;
+    private int rowFreezePoint;
+    private int columnFreezePoint;
 
     /**
      * 行指针

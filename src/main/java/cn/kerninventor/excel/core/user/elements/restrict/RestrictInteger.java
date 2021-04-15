@@ -1,6 +1,8 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
-import cn.kerninventor.excel.core.constants.ComparisionType;
+import cn.kerninventor.excel.core.constants.ComparisonType;
+
+import java.lang.annotation.*;
 
 /**
  * <p>
@@ -9,11 +11,15 @@ import cn.kerninventor.excel.core.constants.ComparisionType;
  *
  * @author Kern
  */
+@RestrictColumn(supportTypes = {Integer.class})
+@Documented
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictInteger {
 
     int value() default 0;
 
     int value2() default 0;
 
-    ComparisionType compareType() default ComparisionType.GT;
+    ComparisonType compareType() default ComparisonType.GT;
 }

@@ -15,6 +15,12 @@ import java.util.Objects;
  */
 public class ReflectUtil {
 
+
+    public static <A extends Annotation> A getRequiredAnnotation(Class<?> tClass, Class<A> aClass, String notPresentMessage) {
+        return Assert.notNull(tClass.getDeclaredAnnotation(aClass), notPresentMessage);
+    }
+
+
     /**
      * 获取指定字段名的标准Get方法名称
      * @param fieldName

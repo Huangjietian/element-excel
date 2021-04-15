@@ -23,19 +23,17 @@ public class ExcelBeeper {
 
     public static <T> Writer<T> callWriter(Class<T> tClass, DocumentType documentType) {
         Workbook workbook;
-        switch (documentType) {
-            case XLS:
-                workbook = new HSSFWorkbook();
-                break;
-            default:
-                workbook = new XSSFWorkbook();
+        if (documentType == DocumentType.XLS) {
+            workbook = new HSSFWorkbook();
+        } else {
+            workbook = new XSSFWorkbook();
         }
-        ComponentFactory parser = ComponentFactory.of(tClass);
+        ComponentFactory<T> parser = ComponentFactory.of(tClass);
         return null;
     }
 
     public static <T> Reader<T> callReader(Class<T> tClass, Workbook workbook) {
-        ComponentFactory parser = ComponentFactory.of(tClass);
+        ComponentFactory<T> parser = ComponentFactory.of(tClass);
         return null;
     }
 

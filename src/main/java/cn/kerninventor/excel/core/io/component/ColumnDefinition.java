@@ -1,9 +1,13 @@
 package cn.kerninventor.excel.core.io.component;
 
+import cn.kerninventor.excel.core.user.interfaces.CellValueWriter;
+
 import java.lang.reflect.Field;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *     列定义
+ * </p>
  *
  * @author Kern
  */
@@ -11,5 +15,12 @@ public class ColumnDefinition {
 
     private Field field;
     private boolean ignore;
-//    FutureTask futureTask = new FutureTask();
+    private String headlineValue;
+    private int columnWidth;
+    private String cellFormat;
+    private String formula;
+    private CellValueWriter cellValueWriter;
+
+
+
 }

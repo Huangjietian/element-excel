@@ -1,6 +1,11 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
-import cn.kerninventor.excel.core.constants.ComparisionType;
+import cn.kerninventor.excel.core.constants.ComparisonType;
+
+import java.lang.annotation.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * <p>
@@ -9,12 +14,16 @@ import cn.kerninventor.excel.core.constants.ComparisionType;
  *
  * @author Kern
  */
+@RestrictColumn(supportTypes = {LocalDate.class, LocalDateTime.class, Date.class, String.class})
+@Documented
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictDateTime {
 
     String value() default "1900-01-01";
 
     String value2() default "";
 
-    ComparisionType compareType() default ComparisionType.GT;
+    ComparisonType compareType() default ComparisonType.GT;
 
 }

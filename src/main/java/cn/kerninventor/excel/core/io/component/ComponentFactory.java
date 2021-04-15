@@ -2,6 +2,7 @@ package cn.kerninventor.excel.core.io.component;
 
 import cn.kerninventor.excel.core.user.elements.Tabulation;
 import cn.kerninventor.excel.core.utils.Assert;
+import cn.kerninventor.excel.core.utils.ReflectUtil;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -24,8 +25,7 @@ public class ComponentFactory<T> {
          * 获取配置主注解
          */
         Assert.notNull(tClass, "配置类Class对象不能为空");
-        Tabulation tabulation = tClass.getDeclaredAnnotation(Tabulation.class);
-        Assert.notNull(tabulation, "错误的配置类, 配置类必须添加如下注解： " + Tabulation.class.getName());
+        Tabulation tabulation = ReflectUtil.getRequiredAnnotation(tClass, Tabulation.class, "错误的配置类, 配置类必须添加如下注解： " + Tabulation.class.getName());
 
         /**
          * 获取列注解， 包括ExcelColumn 和 ExcelValidation
