@@ -1,5 +1,6 @@
 package cn.kerninventor.excel.core.user.elements.suspension;
 
+import cn.kerninventor.excel.core.user.elements.style.Style;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 
 import java.lang.annotation.*;
@@ -11,6 +12,7 @@ import java.lang.annotation.*;
  * @author Kern
  */
 @Documented
+@Repeatable(TextBox.List.class)
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TextBox {
@@ -26,7 +28,7 @@ public @interface TextBox {
      * @see Anchor
      * @return
      */
-    Anchor anchorIndex();
+    int[] anchorIndex();
 
     /**
      * 文本框垂直居中样式
@@ -52,4 +54,11 @@ public @interface TextBox {
      * @return
      */
     Palette lineColor() default @Palette(red = 0, green = 0, blue = 0);
+
+    @Documented
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface List {
+        TextBox[] value();
+    }
 }

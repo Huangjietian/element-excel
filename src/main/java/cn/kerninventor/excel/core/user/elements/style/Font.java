@@ -1,9 +1,10 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.FontUnderline;
 
 import java.lang.annotation.*;
+
+import static org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
 
 /**
  * <p>
@@ -32,7 +33,7 @@ public @interface Font {
      * 字体颜色
      * @return
      */
-    HSSFColor.HSSFColorPredefined color() default HSSFColor.HSSFColorPredefined.BLACK;
+    HSSFColorPredefined color() default HSSFColorPredefined.BLACK;
 
     /**
      * 字体加粗

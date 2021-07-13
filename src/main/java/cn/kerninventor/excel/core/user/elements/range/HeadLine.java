@@ -1,6 +1,8 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
 
+import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+
 import java.lang.annotation.*;
 
 /**
@@ -13,11 +15,16 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 public @interface HeadLine {
 
+
     String value();
 
     int rowNumber() default 1;
 
     float rowHeight() default 15.0f;
 
-
+    /**
+     * 风格下标
+     * @return
+     */
+    double styleIndex() default StyleScope.global;
 }

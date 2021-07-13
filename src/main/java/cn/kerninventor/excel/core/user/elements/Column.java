@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements;
 
 
+import cn.kerninventor.excel.core.user.elements.style.StyleScope;
 import cn.kerninventor.excel.core.user.impl.DefaultCellValueReader;
 import cn.kerninventor.excel.core.user.interfaces.CellValueReader;
 import cn.kerninventor.excel.core.user.impl.DefaultCellValueWriter;
@@ -25,6 +26,12 @@ public @interface Column {
      * @return
      */
     String value();
+
+    /**
+     * 风格下标
+     * @return
+     */
+    double styleIndex() default StyleScope.global;
 
     /**
      * 定义列宽,

@@ -1,7 +1,13 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
+import org.apache.commons.math3.stat.inference.BinomialTest;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Workbook;
+
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * <p>
@@ -10,14 +16,18 @@ import org.apache.poi.ss.usermodel.Workbook;
  *
  * @author Kern
  */
-public interface StyleWrapper {
+@FunctionalInterface
+public interface StyleDefine {
+
+    HashMap<Integer, CellStyle> customDefine(Workbook workbook);
+
 
     /**
      * 默认的标题风格
      * @param workbook
      * @return
      */
-    default CellStyle defaultHeadlineStyle(Workbook workbook) {
+    default CellStyle headlineStyle(Workbook workbook) {
         return workbook.createCellStyle();
     }
 

@@ -1,7 +1,7 @@
 package cn.kerninventor.excel.core.io.writer;
 
 
-import cn.kerninventor.excel.core.StreamAppender;
+import cn.kerninventor.excel.core.io.component.Output;
 import cn.kerninventor.excel.core.io.reader.Reader;
 
 /**
@@ -37,7 +37,7 @@ public interface Writer<T> {
 
 
 
-    WriteBreakpoint output(StreamAppender... streamAppenderArr);
+    WriteBreakpoint output(Output... outputArr);
 
 
 

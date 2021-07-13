@@ -1,6 +1,8 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
 
+import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+
 import java.lang.annotation.*;
 
 /**
@@ -27,4 +29,9 @@ public @interface Section {
      */
     int columnNumber() default 1;
 
+    /**
+     * 风格下标
+     * @return
+     */
+    double styleIndex() default StyleScope.global;
 }

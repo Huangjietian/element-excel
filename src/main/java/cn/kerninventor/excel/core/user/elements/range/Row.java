@@ -2,6 +2,9 @@ package cn.kerninventor.excel.core.user.elements.range;
 
 
 
+import cn.kerninventor.excel.core.user.elements.style.Style;
+import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+
 import java.lang.annotation.*;
 
 /**
@@ -18,6 +21,12 @@ import java.lang.annotation.*;
 public @interface Row {
 
     int AUTO_INDEX = -1;
+
+    /**
+     * 风格下标
+     * @return
+     */
+    double styleIndex() default StyleScope.global;
 
     /**
      * 段落, 用于配置复杂的包含多个段落的行

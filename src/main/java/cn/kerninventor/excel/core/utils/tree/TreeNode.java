@@ -18,6 +18,9 @@ import java.util.function.Predicate;
 public class TreeNode<E> implements Serializable {
 
     public TreeNode(Object nodeKey, E nodeInfo) {
+        if (nodeKey == null) {
+            throw new NullPointerException("The node key cannot be null! node:" + nodeInfo.toString());
+        }
         this.nodeKey = nodeKey;
         this.nodeInfo = nodeInfo;
     }
@@ -47,22 +50,18 @@ public class TreeNode<E> implements Serializable {
         this.result = result;
     }
 
-    <K> void decorate(Collection<E> collection, Function<E, K> getNodeKey, Function<E, K> getRootNodeKey) {
-        Iterator<E> iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            E e = iterator.next();
-            if (getNodeKey.apply(getNodeInfo()).equals(getRootNodeKey.apply(e))) {
-                try {
-                    branches.add(new TreeNode<>(getNodeKey.apply(e), e));
-                } catch (Exception exception) {
-                    throw new IllegalArgumentException("Tree decorate has error: " + exception.getMessage(), exception);
-                }
-                iterator.remove();
+    <K> void decorate(Collection<E> collection, final Function<E, K> getNodeKeyFunc, final Function<E, K> getRootNodeKeyFunc) {
+        Iterator<E> eIterator = collection.iterator();
+        while (eIterator.hasNext()) {
+            E e = eIterator.next();
+            if (nodeKey.equals(getRootNodeKeyFunc.apply(e))) {
+                branches.add(new TreeNode<>(getNodeKeyFunc.apply(e), e));
+                eIterator.remove();
             }
         }
         if (!branches.isEmpty()) {
             for (TreeNode<E> treeNode : branches) {
-                treeNode.decorate(collection, getNodeKey, getRootNodeKey);
+                treeNode.decorate(collection, getNodeKeyFunc, getRootNodeKeyFunc);
             }
         }
     }

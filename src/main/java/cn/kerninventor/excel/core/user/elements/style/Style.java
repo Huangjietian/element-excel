@@ -1,13 +1,13 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
-import cn.kerninventor.excel.core.constants.StyleScope;
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 
 import java.lang.annotation.*;
+
+import static org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
 
 /**
  * <p>
@@ -17,15 +17,21 @@ import java.lang.annotation.*;
  */
 @Documented
 @Repeatable(Style.List.class)
-@Target(ElementType.TYPE_PARAMETER)
+@Target({ElementType.TYPE, ElementType.FIELD, ElementType.TYPE_PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Style {
 
     /**
-     * 发布主题
+     * 默认为
      * @return
      */
-    String publishTopic();
+    double index() default StyleScope.global;
+
+    /**
+     * 备注
+     * @return
+     */
+    String notes() default "";
 
     /**
      * 风格字体
@@ -44,7 +50,7 @@ public @interface Style {
      * 边框颜色
      * @return
      */
-    HSSFColor.HSSFColorPredefined borderColor() default HSSFColor.HSSFColorPredefined.BLACK;
+    HSSFColorPredefined borderColor() default HSSFColorPredefined.BLACK;
 
     /**
      * 填充样式
@@ -56,7 +62,7 @@ public @interface Style {
      * 前景颜色
      * @return
      */
-    HSSFColor.HSSFColorPredefined fillColor() default HSSFColor.HSSFColorPredefined.AUTOMATIC;
+    HSSFColorPredefined fillColor() default HSSFColorPredefined.AUTOMATIC;
 
     /**
      * 垂直居中样式
@@ -96,7 +102,7 @@ public @interface Style {
 
 
     @Documented
-    @Target(ElementType.TYPE_PARAMETER)
+    @Target({ElementType.TYPE, ElementType.FIELD, ElementType.TYPE_PARAMETER})
     @Retention(RetentionPolicy.RUNTIME)
     @interface List {
         Style[] value();
