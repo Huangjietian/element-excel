@@ -1,7 +1,8 @@
 package cn.kerninventor.excel.core.user.elements;
 
 
-import cn.kerninventor.excel.core.constants.StyleScope;
+import cn.kerninventor.excel.core.user.impl.DefaultCellValueReader;
+import cn.kerninventor.excel.core.user.interfaces.CellValueReader;
 import cn.kerninventor.excel.core.user.impl.DefaultCellValueWriter;
 import cn.kerninventor.excel.core.user.interfaces.CellValueWriter;
 
@@ -20,10 +21,10 @@ import java.lang.annotation.*;
 public @interface Column {
 
     /**
-     * 定义表头名称
+     * 定义表头
      * @return
      */
-    String[] headlineValue();
+    String value();
 
     /**
      * 定义列宽,
@@ -51,5 +52,9 @@ public @interface Column {
      */
     Class<? extends CellValueWriter> cellWriter() default DefaultCellValueWriter.class;
 
-
+    /**
+     * 定义列的单元格读取器 默认提供的几种单元格读取器请参考 {@link CellValueReader}
+     * @return
+     */
+    Class<? extends CellValueReader> cellReader() default DefaultCellValueReader.class;
 }

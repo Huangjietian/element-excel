@@ -12,7 +12,7 @@ import java.lang.annotation.*;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.PARAMETER})
+@Target({ElementType.PARAMETER, ElementType.FIELD})
 public @interface Section {
 
     /**
@@ -22,15 +22,9 @@ public @interface Section {
     String value();
 
     /**
-     * 风格
-     * @return
-     */
-    int styleSubs() default -1;
-
-    /**
      * 占据的列数
      * @return
      */
-    int colLength() default Integer.MAX_VALUE;
+    int columnNumber() default 1;
 
 }

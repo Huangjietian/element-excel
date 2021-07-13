@@ -22,6 +22,12 @@ import java.lang.annotation.*;
 public @interface Style {
 
     /**
+     * 发布主题
+     * @return
+     */
+    String publishTopic();
+
+    /**
      * 风格字体
      * @see Font
      * @return

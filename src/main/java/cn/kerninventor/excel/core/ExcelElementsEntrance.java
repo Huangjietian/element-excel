@@ -10,25 +10,25 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  * <p>
- *     Beeper. Simple Method Factory!
+ *     entrance. Simple Method Factory!
  * </p>
  *
  * @author Kern
  */
-public class ExcelBeeper {
+public class ExcelElementsEntrance {
 
-    public static <T> Writer<T> callWriter(Class<T> tClass) {
-        return callWriter(tClass, DocumentType.XLSX);
+    public static <T> Writer<T> callWriter(Class<T> templateClass) {
+        return callWriter(templateClass, DocumentType.XLSX);
     }
 
-    public static <T> Writer<T> callWriter(Class<T> tClass, DocumentType documentType) {
+    public static <T> Writer<T> callWriter(Class<T> templateClass, DocumentType documentType) {
         Workbook workbook;
         if (documentType == DocumentType.XLS) {
             workbook = new HSSFWorkbook();
         } else {
             workbook = new XSSFWorkbook();
         }
-        ComponentFactory<T> parser = ComponentFactory.of(tClass);
+        ComponentFactory<T> parser = ComponentFactory.of(templateClass);
         return null;
     }
 

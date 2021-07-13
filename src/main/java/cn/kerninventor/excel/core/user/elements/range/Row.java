@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
 
+
 import java.lang.annotation.*;
 
 /**
@@ -11,14 +12,15 @@ import java.lang.annotation.*;
  * @author Kern
  */
 @Documented
+@Repeatable(Row.List.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-public @interface Line {
+public @interface Row {
 
     int AUTO_INDEX = -1;
 
     /**
-     * 段落
+     * 段落, 用于配置复杂的包含多个段落的行
      * @return
      */
     Section[] value() default {};
@@ -30,12 +32,6 @@ public @interface Line {
      * @return
      */
     String[] strValue() default {};
-
-    /**
-     * 风格订阅
-     * @return
-     */
-    int styleSubs() default -1;
 
     /**
      * 列下标
@@ -66,4 +62,11 @@ public @interface Line {
      * @return
      */
     boolean bottom() default false;
+
+    @Documented
+    @Target(ElementType.TYPE)
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface List {
+        Row[] value();
+    }
 }

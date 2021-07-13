@@ -1,4 +1,4 @@
-package cn.kerninventor.excel.core.user.elements;
+package cn.kerninventor.excel.core.user.elements.functionality;
 
 import cn.kerninventor.excel.core.user.impl.DefaultCellValueComparator;
 import cn.kerninventor.excel.core.user.interfaces.CellValueComparator;
