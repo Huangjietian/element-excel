@@ -1,7 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
 
-import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+import cn.kerninventor.excel.core.user.elements.style.DefaultStyleIndex;
 
 import java.lang.annotation.*;
 
@@ -33,5 +33,5 @@ public @interface Section {
      * 风格下标
      * @return
      */
-    double styleIndex() default StyleScope.global;
+    double styleIndex() default DefaultStyleIndex.defaultRange;
 }

@@ -122,6 +122,51 @@ public final class StyleBuilder {
     }
 
     /**
+     * 设置上边框
+     * @param borderStyle
+     * @return
+     */
+    public StyleBuilder setTopBorder(BorderStyle borderStyle){
+        return setTopBorder(borderStyle, HSSFColor.HSSFColorPredefined.BLACK);
+    }
+
+    /**
+     * 设置下边框
+     * @param borderStyle
+     * @return
+     */
+    public StyleBuilder setBottomBorder(BorderStyle borderStyle){
+        return setBottomBorder(borderStyle, HSSFColor.HSSFColorPredefined.BLACK);
+    }
+
+    /**
+     * 设置左边框
+     * @param borderStyle
+     * @return
+     */
+    public StyleBuilder setLeftBorder(BorderStyle borderStyle){
+        return setLeftBorder(borderStyle, HSSFColor.HSSFColorPredefined.BLACK);
+    }
+
+    /**
+     * 设置右边框
+     * @param borderStyle
+     * @return
+     */
+    public StyleBuilder setRightBorder(BorderStyle borderStyle){
+        return setRightBorder(borderStyle, HSSFColor.HSSFColorPredefined.BLACK);
+    }
+
+    /**
+     * 设置四周边框
+     * @param borderStyle
+     * @return
+     */
+    public StyleBuilder setSurroundBorder(BorderStyle borderStyle) {
+        return setSurroundBorder(borderStyle, HSSFColor.HSSFColorPredefined.BLACK);
+    }
+
+    /**
      * 设置填充形式
      * @param fillPatternType
      * @return

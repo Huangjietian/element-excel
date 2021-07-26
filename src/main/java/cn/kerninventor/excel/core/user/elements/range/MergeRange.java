@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
-import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+import cn.kerninventor.excel.core.user.elements.Element;
+import cn.kerninventor.excel.core.user.elements.style.DefaultStyleIndex;
 
 /**
  * <p>
@@ -9,11 +10,12 @@ import cn.kerninventor.excel.core.user.elements.style.StyleScope;
  *
  * @author Kern
  */
+@Element(1)
 public @interface MergeRange {
 
     /**
      * 风格下标
      * @return
      */
-    double styleIndex() default StyleScope.global;
+    double styleIndex() default DefaultStyleIndex.defaultRange;
 }

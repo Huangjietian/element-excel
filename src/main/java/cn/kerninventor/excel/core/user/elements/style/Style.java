@@ -1,5 +1,6 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
+import cn.kerninventor.excel.core.user.elements.Element;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
@@ -15,6 +16,7 @@ import static org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
  * </p>
  * @author Kern
  */
+@Element(Integer.MIN_VALUE + 1)
 @Documented
 @Repeatable(Style.List.class)
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.TYPE_PARAMETER})
@@ -25,7 +27,7 @@ public @interface Style {
      * 默认为
      * @return
      */
-    double index() default StyleScope.global;
+    double index();
 
     /**
      * 备注

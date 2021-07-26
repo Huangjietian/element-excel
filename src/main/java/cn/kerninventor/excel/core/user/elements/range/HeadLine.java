@@ -1,7 +1,8 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
 
-import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+import cn.kerninventor.excel.core.user.elements.Element;
+import cn.kerninventor.excel.core.user.elements.style.DefaultStyleIndex;
 
 import java.lang.annotation.*;
 
@@ -10,6 +11,7 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
+@Element(1)
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
@@ -26,5 +28,5 @@ public @interface HeadLine {
      * 风格下标
      * @return
      */
-    double styleIndex() default StyleScope.global;
+    double styleIndex() default DefaultStyleIndex.headline;
 }

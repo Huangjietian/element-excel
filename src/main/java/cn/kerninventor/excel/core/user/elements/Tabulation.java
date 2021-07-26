@@ -11,6 +11,7 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
+@Element(Integer.MIN_VALUE)
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

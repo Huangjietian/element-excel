@@ -3,7 +3,7 @@ package cn.kerninventor.excel.core;
 import cn.kerninventor.excel.core.constants.DocumentType;
 import cn.kerninventor.excel.core.io.reader.Reader;
 import cn.kerninventor.excel.core.io.writer.Writer;
-import cn.kerninventor.excel.core.io.component.ComponentFactory;
+import cn.kerninventor.excel.core.io.component.TabulationContext;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -28,12 +28,10 @@ public class ExcelElementsEntrance {
         } else {
             workbook = new XSSFWorkbook();
         }
-        ComponentFactory<T> parser = ComponentFactory.of(templateClass);
         return null;
     }
 
     public static <T> Reader<T> callReader(Class<T> tClass, Workbook workbook) {
-        ComponentFactory<T> parser = ComponentFactory.of(tClass);
         return null;
     }
 

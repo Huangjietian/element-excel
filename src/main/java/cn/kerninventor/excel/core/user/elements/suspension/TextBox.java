@@ -1,5 +1,6 @@
 package cn.kerninventor.excel.core.user.elements.suspension;
 
+import cn.kerninventor.excel.core.user.elements.Element;
 import cn.kerninventor.excel.core.user.elements.style.Style;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 
@@ -11,6 +12,7 @@ import java.lang.annotation.*;
  * </p>
  * @author Kern
  */
+@Element(Integer.MAX_VALUE - 5)
 @Documented
 @Repeatable(TextBox.List.class)
 @Target(ElementType.TYPE)

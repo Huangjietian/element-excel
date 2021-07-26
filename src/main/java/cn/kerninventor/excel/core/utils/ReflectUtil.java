@@ -1,10 +1,11 @@
 package cn.kerninventor.excel.core.utils;
 
+import cn.kerninventor.excel.core.waring.UnexpectedExcelParseException;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -19,6 +20,7 @@ public class ReflectUtil {
     public static <A extends Annotation> A getRequiredAnnotation(Class<?> tClass, Class<A> aClass, String notPresentMessage) {
         return Assert.notNull(tClass.getDeclaredAnnotation(aClass), notPresentMessage);
     }
+
 
 
     /**
@@ -106,17 +108,17 @@ public class ReflectUtil {
      * @param parameters
      * @param <T>
      * @return
-     * @throws NoSuchMethodException
-     * @throws IllegalAccessException
-     * @throws InvocationTargetException
-     * @throws InstantiationException
      */
-    public static <T extends Object> T newInstance(Class<T> clazz, Object... parameters) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    public static <T extends Object> T newInstance(Class<T> clazz, Object... parameters) {
         Class<?>[] paramTypes = new Class[parameters.length];
         for (int i = 0 ; i < parameters.length ; i ++) {
             paramTypes[i] = parameters[i].getClass();
         }
-        return clazz.getDeclaredConstructor(paramTypes).newInstance(parameters);
+        try {
+            return clazz.getDeclaredConstructor(paramTypes).newInstance(parameters);
+        } catch (Exception e) {
+            throw new UnexpectedExcelParseException("内部组件的构造反射发生错误", e);
+        }
     }
 
     /**

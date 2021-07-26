@@ -9,7 +9,7 @@ import java.lang.annotation.Annotation;
  *
  * @author Kern
  */
-public interface RestrictElementParser<A extends Annotation> {
+public interface ColumnRestrictParser<A extends Annotation> {
 
     
 }

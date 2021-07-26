@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.suspension;
 
+import cn.kerninventor.excel.core.user.elements.Element;
+
 import java.lang.annotation.*;
 import java.net.URI;
 import java.net.URL;
@@ -11,6 +13,7 @@ import java.net.URL;
  *
  * @author Kern
  */
+@Element(Integer.MAX_VALUE - 4)
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

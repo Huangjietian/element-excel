@@ -2,8 +2,8 @@ package cn.kerninventor.excel.core.user.elements.range;
 
 
 
-import cn.kerninventor.excel.core.user.elements.style.Style;
-import cn.kerninventor.excel.core.user.elements.style.StyleScope;
+import cn.kerninventor.excel.core.user.elements.Element;
+import cn.kerninventor.excel.core.user.elements.style.DefaultStyleIndex;
 
 import java.lang.annotation.*;
 
@@ -14,6 +14,7 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
+@Element(2)
 @Documented
 @Repeatable(Row.List.class)
 @Retention(RetentionPolicy.RUNTIME)
@@ -26,7 +27,7 @@ public @interface Row {
      * 风格下标
      * @return
      */
-    double styleIndex() default StyleScope.global;
+    double styleIndex() default DefaultStyleIndex.defaultRange;
 
     /**
      * 段落, 用于配置复杂的包含多个段落的行
