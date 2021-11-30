@@ -1,7 +1,5 @@
 package cn.kerninventor.excel.core;
 
-import cn.kerninventor.excel.core.user.elements.range.Row;
-import cn.kerninventor.excel.core.user.elements.suspension.Anchor;
 import cn.kerninventor.excel.core.user.elements.suspension.Picture;
 import cn.kerninventor.excel.core.user.elements.suspension.TextBox;
 

@@ -21,8 +21,6 @@ public class ReflectUtil {
         return Assert.notNull(tClass.getDeclaredAnnotation(aClass), notPresentMessage);
     }
 
-
-
     /**
      * 获取指定字段名的标准Get方法名称
      * @param fieldName
@@ -51,7 +49,6 @@ public class ReflectUtil {
      * 获取类中指定字段的Get方法
      * @param clazz
      * @param fieldName
-     * @return
      * @throws NoSuchMethodException
      */
     public static Method specifiedGetMethod(Class<?> clazz, String fieldName) throws NoSuchMethodException {
@@ -133,7 +130,6 @@ public class ReflectUtil {
             return false;
         }
     }
-
 
     /**
      * 获取类中的泛型类型

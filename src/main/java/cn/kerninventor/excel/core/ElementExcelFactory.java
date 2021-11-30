@@ -1,9 +1,8 @@
 package cn.kerninventor.excel.core;
 
 import cn.kerninventor.excel.core.constants.DocumentType;
-import cn.kerninventor.excel.core.io.reader.Reader;
-import cn.kerninventor.excel.core.io.writer.Writer;
-import cn.kerninventor.excel.core.io.component.TabulationContext;
+import cn.kerninventor.excel.core.io.reader.ElementExcelReader;
+import cn.kerninventor.excel.core.io.writer.ElementExcelWriter;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -15,13 +14,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  * @author Kern
  */
-public class ExcelElementsEntrance {
+public class ElementExcelFactory {
 
-    public static <T> Writer<T> callWriter(Class<T> templateClass) {
+    public static <T> ElementExcelWriter<T> callWriter(Class<T> templateClass) {
         return callWriter(templateClass, DocumentType.XLSX);
     }
 
-    public static <T> Writer<T> callWriter(Class<T> templateClass, DocumentType documentType) {
+    public static <T> ElementExcelWriter<T> callWriter(Class<T> templateClass, DocumentType documentType) {
         Workbook workbook;
         if (documentType == DocumentType.XLS) {
             workbook = new HSSFWorkbook();
@@ -31,7 +30,7 @@ public class ExcelElementsEntrance {
         return null;
     }
 
-    public static <T> Reader<T> callReader(Class<T> tClass, Workbook workbook) {
+    public static <T> ElementExcelReader<T> callReader(Class<T> tClass, Workbook workbook) {
         return null;
     }
 

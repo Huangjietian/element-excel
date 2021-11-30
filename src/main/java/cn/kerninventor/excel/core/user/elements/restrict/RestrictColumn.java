@@ -1,9 +1,10 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
-import cn.kerninventor.excel.core.user.elements.Element;
-
 import java.lang.annotation.*;
 
+/**
+ * @author kern
+ */
 @Inherited
 @Documented
 @Target(ElementType.ANNOTATION_TYPE)

@@ -12,9 +12,9 @@ import cn.kerninventor.excel.core.constants.DocumentType;
  */
 public interface WriteBreakpoint {
 
-    <T> Writer<T> resume(Class<T> tClass, DocumentType documentType);
+    <T> ElementExcelWriter<T> resume(Class<T> tClass, DocumentType documentType);
 
-    default <T> Writer<T> resume(Class<T> tClass) {
+    default <T> ElementExcelWriter<T> resume(Class<T> tClass) {
         return resume(tClass, DocumentType.XLSX);
     }
 }

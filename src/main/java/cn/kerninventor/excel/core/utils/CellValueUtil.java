@@ -17,11 +17,11 @@ import java.util.Date;
  */
 public final class CellValueUtil {
 
-    public static <T extends Object> void setCellObjectValue(Cell cell, T value) {
+    public static void setCellObjectValue(Cell cell, Object value) {
         if (value == null) {
             return;
         }
-        Class type = value.getClass();
+        Class<?> type = value.getClass();
         //Number
         if (DataTypeGroupUtil.isMemberOfIntType(type)){
             cell.setCellValue(((Integer)value));
@@ -50,16 +50,16 @@ public final class CellValueUtil {
         }
     }
 
-    public static Object getCellValueBySpecifiedType(Cell cell, Class<?> targetClass) {
+    public static <T> T getCellValueBySpecifiedType(Cell cell, Class<T> targetClass) {
         Object ret = null;
         //String
-        if (cell.getCellType() == CellType.STRING && String.class == targetClass) {
+        if (cell.getCellType() == CellType.STRING && String.class.isAssignableFrom(targetClass)) {
             String str = cell.getStringCellValue().trim();
             ret = "".equals(str) ? null : str;
         }
         //Date
         else if (isCellDateFormat(cell)) {
-            if (LocalDate.class == targetClass){
+            if (LocalDate.class.isAssignableFrom(targetClass)){
                 ret = cell.getLocalDateTimeCellValue().toLocalDate();
             } else if (LocalDateTime.class == targetClass) {
                 ret = cell.getLocalDateTimeCellValue();
@@ -73,28 +73,29 @@ public final class CellValueUtil {
             //decimal
             if (BigDecimal.class.isAssignableFrom(targetClass)){
                 ret = BigDecimal.valueOf(aDouble);
-            } else if (Float.class == targetClass) {
+            } else if (Float.class.isAssignableFrom(targetClass)) {
                 ret = aDouble.floatValue();
-            } else if (Double.class == targetClass) {
+            } else if (Double.class.isAssignableFrom(targetClass)) {
                 ret = aDouble;
              //int
-            } else if (Long.class == targetClass) {
+            } else if (Long.class.isAssignableFrom(targetClass)) {
                 ret = aDouble.longValue();
-            } else if (Integer.class == targetClass){
+            } else if (Integer.class.isAssignableFrom(targetClass)){
                 //自动装拆包
                 ret = aDouble.intValue();
             //String
-            } else if (String.class == targetClass){
+            } else if (String.class.isAssignableFrom(targetClass)){
                 ret = aDouble.intValue() + "";
             }
         }
         //Boolean
-        else if (cell.getCellType() == CellType.BOOLEAN && Boolean.class == targetClass) {
+        else if (cell.getCellType() == CellType.BOOLEAN && Boolean.class.isAssignableFrom(targetClass)) {
             ret = cell.getBooleanCellValue();
+        } else {
+            return null;
         }
         //In other cases , ret == null
-        return ret;
-
+        return (T) ret;
     }
 
     public static Object getCellValue(Cell cell) {

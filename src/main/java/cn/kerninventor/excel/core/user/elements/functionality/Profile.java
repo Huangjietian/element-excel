@@ -6,26 +6,37 @@ import java.lang.annotation.*;
  * <p>
  *     根据上下文的环境变量执行某类配置，
  *     例如；
- *      某个类的读写，
- *      某个配置的生效与否
+ *     - env的注入
+ *     - 动态数据的注入
+ *     - 表格列的修改
+ *     - 风格的修改
+ *     - 显示与隐藏
+ *     - 动态字典置换
+ *     - 数据筛选
  * </p>
  *
  * @author Kern
  */
 @Documented
+@Repeatable(Profile.List.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})
 public @interface Profile {
 
     /**
      * 上下文环境变量的键
-     * @return
      */
     String key();
 
     /**
      * 上下文环境变量的值
-     * @return
      */
     String value();
+
+    @Documented
+    @Target({ElementType.FIELD, ElementType.METHOD})
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface List {
+        Profile[] value();
+    }
 }

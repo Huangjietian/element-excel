@@ -1,10 +1,7 @@
 package cn.kerninventor.excel.core.waring;
 
 /**
- * <p>
- *     预期外的Excel解析异常
- * </p>
- *
+ * 预期外的Excel解析异常，一般是由于框架本身的bug导致或者IO异常导致
  * @author Kern
  */
 public class UnexpectedExcelParseException extends RuntimeException {

@@ -1,12 +1,14 @@
 package cn.kerninventor.excel.core.user.elements.functionality;
 
-import cn.kerninventor.excel.core.user.impl.DefaultCellValueComparator;
+import cn.kerninventor.excel.core.user.interfaces.defaultimpl.DefaultCellValueComparator;
 import cn.kerninventor.excel.core.user.interfaces.CellValueComparator;
 
 import java.lang.annotation.*;
 
 /**
- * <p>一句话描述</p>
+ * <p>
+ *     列的合并配置
+ * </p>
  *
  * @author Kern
  */
@@ -17,26 +19,12 @@ public @interface MergeColumn {
 
     /**
      * 基于对应字段名的列进行合并
-     * @return
+     * 如果未匹配到指定的字段名，将导致基于列的合并无效，采用当前列合并
      */
-    String baseOnFieldName() default "";
+    String baseOn() default "";
 
     /**
-     * 是否合并空值
-     * @return
-     */
-    boolean mergeOfEmptyValues() default false;
-
-    /**
-     * 是否对String类型的字段进行 {@link java.lang.String#trim()}
-     * @return
-     */
-    boolean trimOfValue() default true;
-
-    /**
-     *
      * 定义比较器,使用该比较器进行相符判断,对于复杂对象,可以实现 {@link CellValueComparator}接口,并在该处声明
-     * @return
      */
     Class<? extends CellValueComparator> comparator() default DefaultCellValueComparator.class;
 

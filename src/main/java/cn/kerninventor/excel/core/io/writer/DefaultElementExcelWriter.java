@@ -1,23 +1,23 @@
 package cn.kerninventor.excel.core.io.writer;
 
 import cn.kerninventor.excel.core.io.component.Output;
-import cn.kerninventor.excel.core.io.reader.Reader;
+import cn.kerninventor.excel.core.io.reader.ElementExcelReader;
 
 /**
  * <p>一句话描述</p>
  *
  * @author Kern
  */
-public class ExcelWriter<T> implements Writer<T> {
+public class DefaultElementExcelWriter<T> implements ElementExcelWriter<T> {
 
 
     @Override
-    public Writer<T> overwrite(boolean overwrite) {
+    public ElementExcelWriter<T> overwrite(boolean overwrite) {
         return null;
     }
 
     @Override
-    public Reader<T> swerve() {
+    public ElementExcelReader<T> swerve() {
         return null;
     }
 
@@ -32,7 +32,7 @@ public class ExcelWriter<T> implements Writer<T> {
     }
 
 
-    public ExcelWriter<T> write() {
+    public DefaultElementExcelWriter<T> write() {
 
         //写入器的基本步骤
 

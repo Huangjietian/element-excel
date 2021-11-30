@@ -1,8 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.range;
 
 
-import cn.kerninventor.excel.core.user.elements.Element;
-import cn.kerninventor.excel.core.user.elements.style.DefaultStyleIndex;
+import cn.kerninventor.excel.core.user.elements.style.StyleNameConstants;
 
 import java.lang.annotation.*;
 
@@ -11,22 +10,29 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
-@Element(1)
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 public @interface HeadLine {
 
-
+    /**
+     * 大标题内容,允许使用#{}获取动态标题
+     */
     String value();
 
-    int rowNumber() default 1;
+    /**
+     * 大标题占用行数
+     */
+    int rowNumbers() default 1;
 
+    /**
+     * 大标题行高度
+     */
     float rowHeight() default 15.0f;
 
     /**
-     * 风格下标
-     * @return
+     * 风格名称，符合发布订阅模式，如果匹配不到将使用默认风格
      */
-    double styleIndex() default DefaultStyleIndex.headline;
+    String style() default StyleNameConstants.HEADLINE;
+
 }

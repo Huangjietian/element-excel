@@ -10,5 +10,5 @@ import org.apache.poi.ss.usermodel.Workbook;
  */
 public interface ReadBreakpoint {
 
-    <T> Reader<T> resume(Class<T> tClass, Workbook workbook);
+    <T> ElementExcelReader<T> resume(Class<T> tClass, Workbook workbook);
 }

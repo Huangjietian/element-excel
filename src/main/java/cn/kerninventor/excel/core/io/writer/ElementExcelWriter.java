@@ -2,7 +2,7 @@ package cn.kerninventor.excel.core.io.writer;
 
 
 import cn.kerninventor.excel.core.io.component.Output;
-import cn.kerninventor.excel.core.io.reader.Reader;
+import cn.kerninventor.excel.core.io.reader.ElementExcelReader;
 
 /**
  * <p>
@@ -11,7 +11,7 @@ import cn.kerninventor.excel.core.io.reader.Reader;
  *
  * @author Kern
  */
-public interface Writer<T> {
+public interface ElementExcelWriter<T> {
 
     /**
      * 是否在写入时覆盖已有的sheet页
@@ -20,9 +20,9 @@ public interface Writer<T> {
      * @param overwrite
      * @return
      */
-    Writer<T> overwrite(boolean overwrite);
+    ElementExcelWriter<T> overwrite(boolean overwrite);
 
-    Reader<T> swerve();
+    ElementExcelReader<T> swerve();
 
     WriteBreakpoint breakOff();
 
@@ -33,9 +33,6 @@ public interface Writer<T> {
 //    Writer<T> write(String sheetName, WritingSupervisor supervisor);
 //
 //    Writer<T> write(String sheetName, List<T> tList, WritingSupervisor supervisor);
-
-
-
 
     WriteBreakpoint output(Output... outputArr);
 

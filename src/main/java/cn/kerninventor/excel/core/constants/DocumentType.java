@@ -13,7 +13,7 @@ public enum  DocumentType {
     XLSX("The edition since 2003."),
     ;
 
-    private String description;
+    private final String description;
 
     DocumentType(String description) {
         this.description = description;

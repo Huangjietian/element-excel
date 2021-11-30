@@ -1,16 +1,16 @@
 package cn.kerninventor.excel.core.io.reader;
 
 
-import cn.kerninventor.excel.core.io.writer.Writer;
+import cn.kerninventor.excel.core.io.writer.ElementExcelWriter;
 
 /**
  * <p>一句话描述</p>
  *
  * @author Kern
  */
-public interface Reader<T> {
+public interface ElementExcelReader<T> {
 
-    Writer<T> swerve();
+    ElementExcelWriter<T> swerve();
 
 //    Reader<T> read(ReadingSupervisor supervisor, ReadResult<T> readResult);
 //

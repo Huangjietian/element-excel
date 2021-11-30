@@ -1,9 +1,8 @@
 package cn.kerninventor.excel.core.user.interfaces;
 
 
+import cn.kerninventor.excel.core.io.component.Component;
 import org.apache.poi.ss.usermodel.Cell;
-
-import java.lang.reflect.Field;
 
 /**
  * <p>
@@ -12,13 +11,13 @@ import java.lang.reflect.Field;
  *
  * @author Kern
  */
-public interface CellValueWriter {
+public interface CellValueWriter extends Component {
 
     /**
      * 是否是支持的泛型
-     * @param field
+     * @param fieldClass
      */
-    void isSupportedType(Field field);
+    void isSupportedType(Class<?> fieldClass);
 
     /**
      * 设置单元格值

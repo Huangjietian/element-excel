@@ -1,7 +1,8 @@
-package cn.kerninventor.excel.core.builder;
+package cn.kerninventor.excel.core.user.elements.style;
 
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Font;
 
 /**
  * <p>

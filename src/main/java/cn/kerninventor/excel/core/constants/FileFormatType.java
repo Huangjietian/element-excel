@@ -4,7 +4,7 @@ package cn.kerninventor.excel.core.constants;
  * @author Kern
  * @version 1.0
  */
-public enum FileFormatEnum {
+public enum FileFormatType {
 
     XLS_EXCEL("D0CF11E0", ".xls"),
     XLSX_EXCEL("504B0304", ".xlsx"),
@@ -13,7 +13,7 @@ public enum FileFormatEnum {
     private String header;
     private String suffix;
 
-    FileFormatEnum(String header, String suffix) {
+    FileFormatType(String header, String suffix) {
         this.header = header;
         this.suffix = suffix;
     }
@@ -26,9 +26,9 @@ public enum FileFormatEnum {
         return suffix;
     }
 
-    public static FileFormatEnum getFormatByHeader(String header){
-        FileFormatEnum[] enums = FileFormatEnum.values();
-        for (FileFormatEnum formatEnum : enums){
+    public static FileFormatType getFormatByHeader(String header){
+        FileFormatType[] enums = FileFormatType.values();
+        for (FileFormatType formatEnum : enums){
             if (header.contains(formatEnum.header)){
                 return formatEnum;
             }
@@ -36,13 +36,13 @@ public enum FileFormatEnum {
         return null;
     }
 
-    public static boolean isCorrectSuffix(String path, FileFormatEnum... fileFormatEnums) {
+    public static boolean isCorrectSuffix(String path, FileFormatType... fileFormatTypes) {
         if (path == null || "".equals(path.trim()) || !path.contains(".")){
             return false;
         }
         boolean isCorrect = false;
-        for (FileFormatEnum fileFormatEnum : fileFormatEnums){
-            if (path.substring(path.lastIndexOf(".")).equals(fileFormatEnum.suffix)){
+        for (FileFormatType fileFormatType : fileFormatTypes){
+            if (path.substring(path.lastIndexOf(".")).equals(fileFormatType.suffix)){
                 isCorrect = true;
             }
         }

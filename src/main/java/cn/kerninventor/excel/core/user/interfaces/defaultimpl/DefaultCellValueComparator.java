@@ -1,4 +1,4 @@
-package cn.kerninventor.excel.core.user.impl;
+package cn.kerninventor.excel.core.user.interfaces.defaultimpl;
 
 import cn.kerninventor.excel.core.user.interfaces.CellValueComparator;
 
@@ -13,6 +13,9 @@ public class DefaultCellValueComparator <T> implements CellValueComparator<T> {
 
     @Override
     public boolean compare(T o1, T o2) {
+        if (o1 == null || o2 == null) {
+            return false;
+        }
         return o1.equals(o2);
     }
 

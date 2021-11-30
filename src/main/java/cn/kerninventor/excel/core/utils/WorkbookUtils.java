@@ -1,9 +1,7 @@
 package cn.kerninventor.excel.core.utils;
 
-import cn.kerninventor.excel.core.constants.FontConstants;
 import org.apache.poi.ss.usermodel.*;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 /**
@@ -71,7 +69,7 @@ public class WorkbookUtils {
     public static int getCellWidthByContent(Object obj, int fontHeightInPoints) {
         int cellWidthAdjustIncrement = 2;
         int size = obj.toString().getBytes(DEFAULT_CHARSET).length + cellWidthAdjustIncrement;
-        return adjustCellWidth(size) * fontHeightInPoints / FontConstants.DEFAULT_FONT_HEIGHT_IN_POINTS;
+        return adjustCellWidth(size) * fontHeightInPoints / 12;
     }
 
     /**
