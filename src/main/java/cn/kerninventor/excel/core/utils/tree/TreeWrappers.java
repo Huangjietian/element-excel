@@ -1,10 +1,7 @@
 package cn.kerninventor.excel.core.utils.tree;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -19,13 +16,10 @@ import java.util.function.Predicate;
 public class TreeWrappers <E> implements Serializable {
 
     private final List<TreeNode<E>> nodes;
+    private int nodeSize = 0;
 
-    public List<TreeNode<E>> getNodes() {
-        return nodes;
-    }
-
-    protected TreeWrappers(List<TreeNode<E>> nodes) {
-        this.nodes = nodes;
+    protected TreeWrappers() {
+        nodes = new LinkedList<>();
     }
 
     /**
@@ -43,16 +37,14 @@ public class TreeWrappers <E> implements Serializable {
      */
     public static <E, K> TreeWrappers<E> of(Collection<E> collection, final TreeRootStrategy<E> rootStrategy, final Function<E, K> getNodeKeyFunc, final Function<E, K> getRootNodeKeyFunc) {
         if (collection == null || collection.isEmpty()) {
-            return new TreeWrappers<>(new ArrayList<>());
+            return new TreeWrappers<>();
         }
-        List<E> roots = getRoots(collection, rootStrategy);
-        if (roots.isEmpty()) {
-            throw new IllegalArgumentException("No root was found!");
-        }
-        List<TreeNode<E>> rootTreeNodeSet = new ArrayList<>(roots.size());
-        roots.forEach(e -> rootTreeNodeSet.add(new TreeNode<>(getNodeKeyFunc.apply(e), e)));
-        rootTreeNodeSet.forEach(e -> e.decorate(collection, getNodeKeyFunc, getRootNodeKeyFunc));
-        return new TreeWrappers<E>(rootTreeNodeSet);
+        int size = collection.size();
+        TreeWrappers<E> treeWrappers = new TreeWrappers<>();
+        treeWrappers.findRoots(collection, rootStrategy, getNodeKeyFunc);
+        treeWrappers.getNodes().forEach(e -> e.decorate(collection, getNodeKeyFunc, getRootNodeKeyFunc, 2));
+        treeWrappers.setNodeSize(size - collection.size());
+        return treeWrappers;
     }
 
     /**
@@ -73,10 +65,9 @@ public class TreeWrappers <E> implements Serializable {
      * 根据根策略匹配根节点
      * @param collection  对象集合
      * @param rootStrategy   根部策略
-     * @param <E>  对象泛型
      * @return   返回根节点集合
      */
-    private static <E> List<E> getRoots(Collection<E> collection, final TreeRootStrategy<E> rootStrategy) {
+    private void findRoots(Collection<E> collection, final TreeRootStrategy<E> rootStrategy, final Function<E, ?> getNodeKeyFunc) {
         List<E> roots = new ArrayList<>(16);
         Iterator<E> eIterator = collection.iterator();
         while (eIterator.hasNext()) {
@@ -86,15 +77,30 @@ public class TreeWrappers <E> implements Serializable {
                 eIterator.remove();
             }
         }
-        return roots;
+        if (roots.isEmpty()) {
+            throw new IllegalArgumentException("No root was found!");
+        }
+        roots.forEach(e -> getNodes().add(new TreeNode<E>(getNodeKeyFunc.apply(e), e, 1)));
+    }
+
+    public List<TreeNode<E>> getNodes() {
+        return nodes;
+    }
+
+    public int getNodeSize() {
+        return nodeSize;
+    }
+
+    private void setNodeSize(int nodeSize) {
+        this.nodeSize = nodeSize;
     }
 
     /**
      * 园艺工人
-     * 引入的 {@link Consumer< TreeNode  <E>> gardener} 将对最终返回的 {@link TreeNode <E>} 类进行消费操作
+     * 引入的 {@link Consumer<TreeNode> gardener} 将对最终返回的 {@link TreeNode<E>} 类进行消费操作
      * {@link TreeNode#setResult(Object)} 将支持接收一个结果集用于存储可能的消费结果
      * @param gardener  对tree类的消费操作定义
-     * @return
+     * @return tree
      */
     public TreeWrappers<E> gardening(final Consumer<TreeNode<E>> gardener) {
         nodes.forEach(e -> e.fullGardening(gardener, node -> true));
@@ -103,15 +109,43 @@ public class TreeWrappers <E> implements Serializable {
 
     /**
      * 园艺工人
-     * 引入的 {@link Consumer< TreeNode  <E>> gardener} 将对最终返回的 {@link TreeNode <E>} 类进行消费操作
+     * 引入的 {@link Consumer<TreeNode> gardener} 将对最终返回的 {@link TreeNode<E>} 类进行消费操作
      * {@link TreeNode#setResult(Object)} 将支持接收一个结果集用于存储可能的消费结果
      * @param gardener  对tree类的消费操作定义
      * @param predicate 对断言为true的资源进行该操作，传入{@code true}时将默认对所有资源进行递归操作
-     * @return
+     * @return tree
      */
     public TreeWrappers<E> gardening(final Consumer<TreeNode<E>> gardener, final Predicate<E> predicate) {
         nodes.forEach(e -> e.fullGardening(gardener, predicate));
         return this;
+    }
+
+    public <M> List<M> toList(final Function<TreeNode<E>, M> mapper) {
+        return toCollection(new LinkedList<>(), mapper);
+    }
+
+    public <M> Set<M> toSet(final Function<TreeNode<E>, M> mapper) {
+        return toCollection(new LinkedHashSet<>(), mapper);
+    }
+
+    public <C extends Collection<M>, M> C toCollection(C collection, final Function<TreeNode<E>, M> mapper) {
+        if (collection != null) {
+            gardening(e -> collection.add(mapper.apply(e)));
+        }
+        return collection;
+    }
+
+    public TreeNode<E> getNode(Object nodeKey) {
+        if (nodeKey == null) {
+            return null;
+        }
+        List<TreeNode<E>> node = new ArrayList<>(1);
+        gardening(e -> {
+            if (e.getNodeKey().equals(nodeKey) && node.size() == 0) {
+                node.add(e);
+            }
+        });
+        return node.size() > 0 ? node.get(0) : null;
     }
 
     /**
@@ -122,6 +156,11 @@ public class TreeWrappers <E> implements Serializable {
     @FunctionalInterface
     public interface TreeRootStrategy<E> {
 
+        /**
+         * 规则
+         * @param root root
+         * @return true|false
+         */
         boolean rule(E root);
 
     }
