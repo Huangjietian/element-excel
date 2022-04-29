@@ -11,8 +11,16 @@ import java.util.Collection;
  */
 public interface Branched<Key> extends Serializable {
 
+    /**
+     * 子节点唯一标识
+     * @return key
+     */
     Key nodeKey();
 
+    /**
+     * 父节点唯一标识
+     * @return key
+     */
     Key rootNodeKey();
 
 }

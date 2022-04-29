@@ -1,9 +1,9 @@
 package cn.kerninventor.excel.core.utils.tree;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -25,9 +25,19 @@ public class TreeNode<E> implements Serializable {
         this.nodeInfo = nodeInfo;
     }
 
+    public TreeNode(Object nodeKey, E nodeInfo, int level) {
+        if (nodeKey == null) {
+            throw new NullPointerException("The node key cannot be null! node:" + nodeInfo.toString());
+        }
+        this.nodeKey = nodeKey;
+        this.nodeInfo = nodeInfo;
+        this.level = level;
+    }
+
     private final Object nodeKey;
-    private E nodeInfo;
-    private List<TreeNode<E>> branches = new ArrayList<>(16);
+    private final E nodeInfo;
+    private final List<TreeNode<E>> branches = new LinkedList<>();
+    private int level;
     private Object result;
 
     public Object getNodeKey() {
@@ -42,6 +52,10 @@ public class TreeNode<E> implements Serializable {
         return branches;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
     public Object getResult() {
         return result;
     }
@@ -50,18 +64,18 @@ public class TreeNode<E> implements Serializable {
         this.result = result;
     }
 
-    <K> void decorate(Collection<E> collection, final Function<E, K> getNodeKeyFunc, final Function<E, K> getRootNodeKeyFunc) {
+    <K> void decorate(Collection<E> collection, final Function<E, K> getNodeKeyFunc, final Function<E, K> getRootNodeKeyFunc, int level) {
         Iterator<E> eIterator = collection.iterator();
         while (eIterator.hasNext()) {
             E e = eIterator.next();
             if (nodeKey.equals(getRootNodeKeyFunc.apply(e))) {
-                branches.add(new TreeNode<>(getNodeKeyFunc.apply(e), e));
+                branches.add(new TreeNode<>(getNodeKeyFunc.apply(e), e, level));
                 eIterator.remove();
             }
         }
         if (!branches.isEmpty()) {
             for (TreeNode<E> treeNode : branches) {
-                treeNode.decorate(collection, getNodeKeyFunc, getRootNodeKeyFunc);
+                treeNode.decorate(collection, getNodeKeyFunc, getRootNodeKeyFunc, ++level);
             }
         }
     }
@@ -76,7 +90,6 @@ public class TreeNode<E> implements Serializable {
         if (predicate.test(getNodeInfo())) {
             gardener.accept(this);
         }
-        gardener.accept(this);
         getBranches().forEach(e -> e.fullGardening(gardener, predicate));
     }
 
