@@ -15,7 +15,7 @@ import java.util.Date;
  * @uthor Kern
  * @version 1.0
  */
-public final class CellValueUtil {
+public final class CellValueTools {
 
     public static void setCellObjectValue(Cell cell, Object value) {
         if (value == null) {
@@ -23,13 +23,13 @@ public final class CellValueUtil {
         }
         Class<?> type = value.getClass();
         //Number
-        if (DataTypeGroupUtil.isMemberOfIntType(type)){
+        if (DataTypeGroupTools.isMemberOfIntType(type)){
             cell.setCellValue(((Integer)value));
-        } else if (DataTypeGroupUtil.isMemberOfDecimal(type)){
+        } else if (DataTypeGroupTools.isMemberOfDecimal(type)){
             cell.setCellValue(((Number)value).doubleValue());
         }
         //Date
-        else if (DataTypeGroupUtil.isMemberOfDateType(type)) {
+        else if (DataTypeGroupTools.isMemberOfDateType(type)) {
             cell.setCellValue((Date)value);
         }
         //LocalDate

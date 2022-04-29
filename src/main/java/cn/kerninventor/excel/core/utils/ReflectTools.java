@@ -5,7 +5,6 @@ import cn.kerninventor.excel.core.waring.UnexpectedExcelParseException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -14,7 +13,7 @@ import java.util.stream.Collectors;
  * @author Kern
  * @version 1.0
  */
-public class ReflectUtil {
+public class ReflectTools {
 
 
     public static <A extends Annotation> A getRequiredAnnotation(Class<?> tClass, Class<A> aClass, String notPresentMessage) {

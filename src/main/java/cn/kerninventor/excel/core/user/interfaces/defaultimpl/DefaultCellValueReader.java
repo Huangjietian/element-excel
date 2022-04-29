@@ -1,7 +1,7 @@
 package cn.kerninventor.excel.core.user.interfaces.defaultimpl;
 
 import cn.kerninventor.excel.core.user.interfaces.CellValueReader;
-import cn.kerninventor.excel.core.utils.CellValueUtil;
+import cn.kerninventor.excel.core.utils.CellValueTools;
 import org.apache.poi.ss.usermodel.Cell;
 
 /**
@@ -21,7 +21,7 @@ public class DefaultCellValueReader implements CellValueReader {
 
     @Override
     public <T> T readCellValue(Cell cell, Class<T> generics) {
-        return (T) CellValueUtil.getCellValueBySpecifiedType(cell, generics);
+        return (T) CellValueTools.getCellValueBySpecifiedType(cell, generics);
     }
 
 }

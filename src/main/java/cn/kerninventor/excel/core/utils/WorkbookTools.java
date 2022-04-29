@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
  * @Since: 2021/3/30
  * @author: Kern
  */
-public class WorkbookUtils {
+public class WorkbookTools {
 
     /**
      * 中文版Excel默认的编码格式为GBK

@@ -18,9 +18,9 @@ import java.math.BigDecimal;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictDecimal {
 
-    double value() default 0.00;
+    double min() default 0.00;
 
-    double value2() default 0.00;
+    double max() default 0.00;
 
     ComparisonType compareType() default ComparisonType.GT;
 }

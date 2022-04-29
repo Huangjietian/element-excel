@@ -1,8 +1,7 @@
-package cn.kerninventor.excel.core.io.writer;
+package cn.kerninventor.excel.core.io;
 
 
 import cn.kerninventor.excel.core.io.component.Output;
-import cn.kerninventor.excel.core.io.reader.ElementExcelReader;
 
 /**
  * <p>
@@ -22,7 +21,7 @@ public interface ElementExcelWriter<T> {
      */
     ElementExcelWriter<T> overwrite(boolean overwrite);
 
-    ElementExcelReader<T> swerve();
+    ElementExcelReader<T> convert();
 
     WriteBreakpoint breakOff();
 

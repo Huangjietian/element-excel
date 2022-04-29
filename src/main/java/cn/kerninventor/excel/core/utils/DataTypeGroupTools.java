@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Kern
  * @version 1.0
  */
-public class DataTypeGroupUtil {
+public class DataTypeGroupTools {
 
     public static boolean isMemberOfNumberType(Class<?> clz) {
         return Number.class.isAssignableFrom(clz);

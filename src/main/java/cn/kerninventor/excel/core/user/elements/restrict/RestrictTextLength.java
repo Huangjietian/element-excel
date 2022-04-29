@@ -17,9 +17,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictTextLength {
 
-    int value();
+    int min();
 
-    int value2();
+    int max();
 
     ComparisonType compareType() default ComparisonType.LTE;
 }

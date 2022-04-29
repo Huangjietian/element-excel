@@ -1,7 +1,7 @@
 package cn.kerninventor.excel.core.user.interfaces.defaultimpl;
 
 import cn.kerninventor.excel.core.user.interfaces.CellValueWriter;
-import cn.kerninventor.excel.core.utils.CellValueUtil;
+import cn.kerninventor.excel.core.utils.CellValueTools;
 import org.apache.poi.ss.usermodel.Cell;
 
 /**
@@ -21,6 +21,6 @@ public class DefaultCellValueWriter implements CellValueWriter {
 
     @Override
     public void setCellValue(Cell cell, Object value) {
-        CellValueUtil.setCellObjectValue(cell, value);
+        CellValueTools.setCellObjectValue(cell, value);
     }
 }

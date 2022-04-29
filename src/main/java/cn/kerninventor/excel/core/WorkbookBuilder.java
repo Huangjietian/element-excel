@@ -1,8 +1,11 @@
 package cn.kerninventor.excel.core;
 
+import cn.kerninventor.excel.core.constants.DocumentType;
 import cn.kerninventor.excel.core.utils.Assert;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,18 +21,26 @@ import java.io.InputStream;
  */
 public class WorkbookBuilder {
 
-    public Workbook construct(String localFilePath) throws IOException {
+    public static Workbook build(DocumentType documentType) {
+        if (documentType == DocumentType.XLS) {
+            return new HSSFWorkbook();
+        } else {
+            return new XSSFWorkbook();
+        }
+    }
+
+    public static Workbook build(String localFilePath) throws IOException {
         File localFile = new File(localFilePath);
-        Assert.isTrue(localFile.exists(), new NullPointerException("File does not exist"));
+        Assert.isTrue(localFile.exists(), new NullPointerException("File does not exist!"));
         Assert.isTrue(localFile.isFile(), "Wrong file format!");
-        return construct(localFile);
+        return build(localFile);
     }
 
-    public static Workbook construct(File file) throws IOException {
-        return construct(new FileInputStream(file));
+    public static Workbook build(File file) throws IOException {
+        return build(new FileInputStream(file));
     }
 
-    public static Workbook construct(InputStream inputStream) throws IOException {
+    public static Workbook build(InputStream inputStream) throws IOException {
         return WorkbookFactory.create(inputStream);
     }
 

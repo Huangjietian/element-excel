@@ -20,9 +20,9 @@ import java.util.Date;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictDateTime {
 
-    String value() default "1900-01-01";
+    String after() default "1900-01-01";
 
-    String value2() default "";
+    String before() default "";
 
     ComparisonType compareType() default ComparisonType.GT;
 

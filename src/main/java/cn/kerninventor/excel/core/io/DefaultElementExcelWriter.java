@@ -1,7 +1,6 @@
-package cn.kerninventor.excel.core.io.writer;
+package cn.kerninventor.excel.core.io;
 
 import cn.kerninventor.excel.core.io.component.Output;
-import cn.kerninventor.excel.core.io.reader.ElementExcelReader;
 
 /**
  * <p>一句话描述</p>
@@ -10,14 +9,16 @@ import cn.kerninventor.excel.core.io.reader.ElementExcelReader;
  */
 public class DefaultElementExcelWriter<T> implements ElementExcelWriter<T> {
 
+    private boolean isOverwrite = true;
 
     @Override
-    public ElementExcelWriter<T> overwrite(boolean overwrite) {
-        return null;
+    public ElementExcelWriter<T> overwrite(boolean isOverwrite) {
+        this.isOverwrite = isOverwrite;
+        return this;
     }
 
     @Override
-    public ElementExcelReader<T> swerve() {
+    public ElementExcelReader<T> convert() {
         return null;
     }
 

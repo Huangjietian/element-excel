@@ -17,9 +17,9 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictInteger {
 
-    int value() default 0;
+    int min() default 0;
 
-    int value2() default 0;
+    int max() default 0;
 
     ComparisonType compareType() default ComparisonType.GT;
 }

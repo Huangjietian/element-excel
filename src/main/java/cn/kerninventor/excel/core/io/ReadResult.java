@@ -1,4 +1,4 @@
-package cn.kerninventor.excel.core.io.reader;
+package cn.kerninventor.excel.core.io;
 
 /**
  * <p>一句话描述</p>

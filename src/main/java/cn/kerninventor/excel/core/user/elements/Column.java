@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements;
 
 
+import cn.kerninventor.excel.core.user.elements.style.StyleNameConstants;
 import cn.kerninventor.excel.core.user.interfaces.defaultimpl.DefaultCellValueReader;
 import cn.kerninventor.excel.core.user.interfaces.defaultimpl.DefaultCellValueWriter;
 import cn.kerninventor.excel.core.user.interfaces.CellValueReader;
@@ -28,12 +29,12 @@ public @interface Column {
     /**
      * 表头风格名称，符合发布订阅模式，如果匹配不到将使用默认风格
      */
-    String headStyleName() default "ColumnHead";
+    String headStyleName() default StyleNameConstants.COLUMN_HEAD;
 
     /**
      * 表体风格名称，符合发布订阅模式，如果匹配不到将使用默认风格
      */
-    String bodyStyleName() default "ColumnBody";
+    String bodyStyleName() default StyleNameConstants.COLUMN_BODY;
 
     /**
      * 定义列宽,

@@ -13,18 +13,18 @@ import java.util.function.Supplier;
 public class Assert {
 
     public static <E> E notNull(E object) {
-        return notNull(object, new NullPointerException(object.getClass().getName() + "is not present!"));
+        return notNull(object, new NullPointerException("Required object is not present!"));
     }
 
     public static <E> E notNull(E object, String message) {
         return notNull(object, new NullPointerException(message));
     }
 
-    public static <E> E notNull(E notNull, Supplier<String> messageSupplier) {
-        return notNull(notNull, messageSupplier != null ? messageSupplier.get() : null);
+    public static <E> E notNull(E object, Supplier<RuntimeException> messageSupplier) {
+        return notNull(object, messageSupplier != null ? messageSupplier.get() : new NullPointerException("Required object is not present!"));
     }
 
-    public static <E> E notNull(E object, RuntimeException exception) {
+    public static <E, RE extends RuntimeException> E notNull(E object, RE exception) {
         if (object == null) {
             throw exception;
         }

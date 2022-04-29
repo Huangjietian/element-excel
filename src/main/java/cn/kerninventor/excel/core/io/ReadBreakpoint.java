@@ -1,4 +1,4 @@
-package cn.kerninventor.excel.core.io.reader;
+package cn.kerninventor.excel.core.io;
 
 
 import org.apache.poi.ss.usermodel.Workbook;

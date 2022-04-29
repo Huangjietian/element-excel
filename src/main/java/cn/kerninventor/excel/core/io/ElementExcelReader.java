@@ -1,7 +1,5 @@
-package cn.kerninventor.excel.core.io.reader;
+package cn.kerninventor.excel.core.io;
 
-
-import cn.kerninventor.excel.core.io.writer.ElementExcelWriter;
 
 /**
  * <p>一句话描述</p>
@@ -10,7 +8,7 @@ import cn.kerninventor.excel.core.io.writer.ElementExcelWriter;
  */
 public interface ElementExcelReader<T> {
 
-    ElementExcelWriter<T> swerve();
+    ElementExcelWriter<T> convert();
 
 //    Reader<T> read(ReadingSupervisor supervisor, ReadResult<T> readResult);
 //

@@ -5,7 +5,7 @@ import cn.kerninventor.excel.core.user.elements.functionality.MergeColumn;
 import cn.kerninventor.excel.core.user.interfaces.CellValueReader;
 import cn.kerninventor.excel.core.user.interfaces.CellValueWriter;
 import cn.kerninventor.excel.core.utils.Assert;
-import cn.kerninventor.excel.core.utils.ReflectUtil;
+import cn.kerninventor.excel.core.utils.ReflectTools;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -30,8 +30,8 @@ public class ColumnDefinition {
     ColumnDefinition(Field field) {
         this.column = Assert.notNull(field.getDeclaredAnnotation(Column.class), "错误的列");
         this.field = field;
-        this.cellValueWriter = ReflectUtil.newInstance(column.cellWriter());
-        this.cellValueReader = ReflectUtil.newInstance(column.cellReader());
+        this.cellValueWriter = ReflectTools.newInstance(column.cellWriter());
+        this.cellValueReader = ReflectTools.newInstance(column.cellReader());
     }
 
 
