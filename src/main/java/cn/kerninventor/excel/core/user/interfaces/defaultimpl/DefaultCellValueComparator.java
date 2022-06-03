@@ -9,11 +9,14 @@ import cn.kerninventor.excel.core.user.interfaces.CellValueComparator;
  *
  * @author Kern
  */
-public class DefaultCellValueComparator <T> implements CellValueComparator<T> {
+public class DefaultCellValueComparator implements CellValueComparator<Object> {
 
     @Override
-    public boolean compare(T o1, T o2) {
-        if (o1 == null || o2 == null) {
+    public boolean compare(Object o1, Object o2) {
+        if (o1 == null) {
+            if (o2 == null) {
+                return true;
+            }
             return false;
         }
         return o1.equals(o2);
