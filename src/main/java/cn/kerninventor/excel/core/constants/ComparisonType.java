@@ -18,9 +18,9 @@ public enum ComparisonType {
     LTE(" <= ",    DataValidationConstraint.OperatorType.LESS_OR_EQUAL,    false),
     ;
 
-    private String expression;
-    private int code;
-    private boolean isNeedValue2;
+    private final String expression;
+    private final int code;
+    private final boolean isNeedValue2;
 
     ComparisonType(String expression, int code, boolean isNeedValue2) {
         this.expression = expression;

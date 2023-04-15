@@ -1,9 +1,6 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.*;
 
 import java.lang.annotation.*;
 
@@ -48,14 +45,19 @@ public @interface Style {
     HSSFColorPredefined borderColor() default HSSFColorPredefined.BLACK;
 
     /**
-     * 填充样式
+     * 前景填充样式
      */
     FillPatternType fillType() default FillPatternType.SOLID_FOREGROUND;
 
     /**
      * 前景颜色
      */
-    HSSFColorPredefined fillColor() default HSSFColorPredefined.AUTOMATIC;
+    HSSFColorPredefined foregroundFillColor() default HSSFColorPredefined.AUTOMATIC;
+
+    /**
+     * 背景颜色
+     */
+    HSSFColorPredefined backgroundFillColor() default HSSFColorPredefined.AUTOMATIC;
 
     /**
      * 垂直居中样式
@@ -80,12 +82,33 @@ public @interface Style {
     /**
      * 缩进
      */
-    int indention() default 0;
+    short indention() default 0;
 
     /**
      * 隐藏
      */
     boolean hidden() default false;
+
+
+    /**
+     * 旋转角度
+     */
+    short rotation() default 0;
+
+    /**
+     * 打开或关闭样式的引用前缀
+     */
+    boolean quotePrefixed() default false;
+
+    /**
+     * 设置根据内容自行缩进
+     */
+    boolean shrinkToFit() default false;
+
+    /**
+     * 单元格格式下标 {@link org.apache.poi.ss.usermodel.BuiltinFormats}
+     */
+    String dataFormat() default "General";
 
     @Documented
     @Target({ElementType.TYPE, ElementType.FIELD, ElementType.TYPE_PARAMETER})

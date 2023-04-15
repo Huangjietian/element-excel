@@ -1,5 +1,6 @@
 package cn.kerninventor.excel.core.user.elements.style;
 
+import org.apache.poi.common.usermodel.fonts.FontCharset;
 import org.apache.poi.ss.usermodel.FontUnderline;
 
 import java.lang.annotation.*;
@@ -20,12 +21,12 @@ public @interface Font {
     /**
      * 字体名称
      */
-    String fontName() default FontNameConstants.SIM_SUM;
+    String name() default FontNameConstants.SIM_SUM;
 
     /**
      * 字体大小
      */
-    int fontSize() default 10;
+    int size() default 10;
 
     /**
      * 字体颜色
@@ -51,4 +52,16 @@ public @interface Font {
      * 字体下划线
      */
     FontUnderline underline() default FontUnderline.NONE;
+
+    /**
+     * 字体编码格式
+     * @return 字体编码格式
+     */
+    FontCharset charset() default FontCharset.DEFAULT;
+
+    /**
+     * 类型偏移量
+     * @return 类型偏移量
+     */
+    short typeOffset() default org.apache.poi.ss.usermodel.Font.SS_NONE;
 }
