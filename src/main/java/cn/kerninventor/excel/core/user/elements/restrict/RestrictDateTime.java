@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
 import cn.kerninventor.excel.core.constants.ComparisonType;
+import cn.kerninventor.excel.core.user.interfaces.defaultimpl.ColumnDateTimeRestrictionFiller;
 
 import java.lang.annotation.*;
 import java.time.LocalDate;
@@ -14,7 +15,10 @@ import java.util.Date;
  *
  * @author Kern
  */
-@RestrictColumn(supportTypes = {LocalDate.class, LocalDateTime.class, Date.class, String.class})
+@RestrictColumn(
+        supportTypes = {LocalDate.class, LocalDateTime.class, Date.class, String.class},
+        filler = ColumnDateTimeRestrictionFiller.class
+)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

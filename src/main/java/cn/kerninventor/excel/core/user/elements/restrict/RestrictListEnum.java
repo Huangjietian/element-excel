@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
+import cn.kerninventor.excel.core.user.interfaces.defaultimpl.ColumnListEnumRestrictionFiller;
+
 import java.lang.annotation.*;
 
 /**
@@ -9,7 +11,10 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
-@RestrictColumn(supportTypes = Object.class)
+@RestrictColumn(
+        supportTypes = Object.class,
+        filler = ColumnListEnumRestrictionFiller.class
+)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

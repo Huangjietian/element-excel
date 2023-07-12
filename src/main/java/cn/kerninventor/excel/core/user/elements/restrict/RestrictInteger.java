@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
 import cn.kerninventor.excel.core.constants.ComparisonType;
+import cn.kerninventor.excel.core.user.interfaces.defaultimpl.ColumnIntegerRestrictionFiller;
 
 import java.lang.annotation.*;
 
@@ -11,7 +12,10 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
-@RestrictColumn(supportTypes = {Integer.class})
+@RestrictColumn(
+        supportTypes = {Integer.class},
+        filler = ColumnIntegerRestrictionFiller.class
+)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

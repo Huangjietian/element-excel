@@ -1,5 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
+import cn.kerninventor.excel.core.user.interfaces.ColumnRestrictionFiller;
+
 import java.lang.annotation.*;
 
 /**
@@ -12,4 +14,6 @@ import java.lang.annotation.*;
 public @interface RestrictColumn {
 
     Class<?>[] supportTypes();
+
+    Class<? extends ColumnRestrictionFiller> filler();
 }

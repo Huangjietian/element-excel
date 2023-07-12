@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
 import cn.kerninventor.excel.core.constants.ComparisonType;
+import cn.kerninventor.excel.core.user.interfaces.defaultimpl.ColumnDecimalRestrictionFiller;
 
 import java.lang.annotation.*;
 import java.math.BigDecimal;
@@ -12,7 +13,10 @@ import java.math.BigDecimal;
  *
  * @author Kern
  */
-@RestrictColumn(supportTypes = {Double.class, Float.class, BigDecimal.class})
+@RestrictColumn(
+        supportTypes = {Double.class, Float.class, BigDecimal.class},
+        filler = ColumnDecimalRestrictionFiller.class
+)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

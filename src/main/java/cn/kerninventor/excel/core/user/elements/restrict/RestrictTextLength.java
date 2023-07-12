@@ -1,6 +1,7 @@
 package cn.kerninventor.excel.core.user.elements.restrict;
 
 import cn.kerninventor.excel.core.constants.ComparisonType;
+import cn.kerninventor.excel.core.user.interfaces.defaultimpl.ColumnTextLengthRestrictionFiller;
 
 import java.lang.annotation.*;
 
@@ -11,15 +12,18 @@ import java.lang.annotation.*;
  *
  * @author Kern
  */
-@RestrictColumn(supportTypes = Object.class)
+@RestrictColumn(
+        supportTypes = Object.class,
+        filler = ColumnTextLengthRestrictionFiller.class
+)
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RestrictTextLength {
 
-    int min();
+    int min() default 0;
 
-    int max();
+    int max() default 255;
 
     ComparisonType compareType() default ComparisonType.LTE;
 }
